@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http:/mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.jejewn.mapper.ProductMapper">
+
+	
+		<select id="getproducList" resultType="io.jejewn.persistence.ProductVO">
+			<![CDATA[ 
+				 select *from 
+		 		(select  
+		 		/*+INDEX_DESC(product_tbl pk_product) */
+		 		rownum rn, product_tbl.*from product_tbl
+		 		 WHERE
+		 		]]>
+		</select>
+		<insert id="insert">
+				INSERT INTO product_tbl (id, name, content)
+					VALUES
+				(product_num.nextval, #{name}, #{content})
+			</insert>
+		
+		<delete id="delete">
+			DELETE FROM product_tbl WHERE id = #{pId}
+		</delete>
+		
+		<update id="update">
+			UPDATE product_tbl 
+				set 
+			name=#{name}, content=#{content}, 
+			updateDate=SYSDATE
+				WHERE id = #{pId}
+		</update>
+		<select id="getDetail" resultType="io.jejewn.persistence.ProductVO">
+			SELECT * FROM product_tbl WHERE id = #{pId}
+		</select>
+	
+
+
+</mapper>

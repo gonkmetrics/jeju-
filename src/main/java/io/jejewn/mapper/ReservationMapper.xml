@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http:/mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.jejewn.mapper.ReservationMapper">
+
+	
+		<select id="getReservList" resultType="io.jejewn.persistence.ReservationVO">
+			<![CDATA[ 
+				 select *from 
+		 		(select  
+		 		/*+INDEX_DESC(reservation_tbl pk_reservation) */
+		 		rownum rn, reservation_tbl.*from reservation_tbl
+		 		 WHERE
+		 		]]>
+		</select>
+		<insert id="insert">
+				INSERT INTO reservation_tbl (id, name, content)
+					VALUES
+				(product_num.nextval, #{Name}, #{Content})
+			</insert>
+		
+		<delete id="delete">
+			DELETE FROM reservation_tbl WHERE id = #{rId}
+		</delete>
+		
+		<update id="update">
+			UPDATE reservation_tbl 
+				set 
+			name=#{Name}, content=#{content}, 
+			rUpdateDate=SYSDATE
+				WHERE rId = #{rId}
+		</update>
+		<select id="getDetail" resultType="io.jejewn.persistence.ReservationVO">
+			SELECT * FROM reservation_tbl WHERE rId = #{rId}
+		</select>
+
+
+</mapper>
