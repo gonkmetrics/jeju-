@@ -1,5 +1,8 @@
 package io.jejewn.persistence;
 
+import lombok.Data;
+
+@Data
 public class CartItemVO {
 	private Long ciId;
 	private int item;
