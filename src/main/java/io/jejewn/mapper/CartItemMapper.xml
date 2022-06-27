@@ -7,6 +7,10 @@
 		SELECT * FROM cart_item ORDER BY id DESC
 	</select>
 	
+	<select id="getCartItemList" resultType="io.jejewn.persistence.CartItemVO">
+		SELECT * FROM cart_item WHERE card_id = #{cId} ORDER BY id DESC
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO cart_item
 		(id, item, cart_id, product_id)
