@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/batch
+						http://www.springframework.org/schema/batch/spring-batch.xsd">
+						
+	<description>
+	<![CDATA[
+	이 예제는 대용량 데이터 처리 시 작업을 분할 하여 처리하는 Partitioner 예제이다.
+	]]>
+	</description>
+						
+	<job id="rangePartitionJob" xmlns="http://www.springframework.org/schema/batch">
+		<step id="rangePartitionStep">
+			<!-- slave -->
+			<partition step="masterRangePartition" partitioner="rangePartioner">
+				<handler grid-size="5" task-executor="taskExecutor"/>
+			</partition>
+		</step>
+	</job>
+	
+	<!-- Column Partition 설정 -->
+	<bean id="rangePartioner" class="com.batchguide.partitioner.ColumnRangePartitioner">
+		<property name="dataSource" ref="mysqlDataSource" />
+		<property name="table" value="black_friday" />
+		<property name="column" value="user_id" />
+	</bean>
+
+	<bean id="taskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor" />
+
+	<!-- READER, WIRTER 설정 -->
+	<step id="masterRangePartition" xmlns="http://www.springframework.org/schema/batch">
+		<tasklet>
+			<chunk writer="blackFridayWriter" reader="blackFridayReader" commit-interval="1000" />
+		</tasklet>
+	</step>
+	
+	<!-- Reader 설정 -->
+	<bean id="blackFridayReader" class="org.mybatis.spring.batch.MyBatisCursorItemReader" scope="step">
+		<!-- queryId 설정 -->
+		<property name="queryId" value="selectBlackFridays" />
+		
+		<!-- parameters 설정 -->
+		<property name="parameterValues">
+			<map>
+				<entry key="minId" value="#{stepExecutionContext[minValue]}"/>
+				<entry key="maxId" value="#{stepExecutionContext[maxValue]}"/>
+			</map>
+		</property>
+		
+		<!-- sqlSession -->
+		<property name="sqlSessionFactory" ref="mysqlSqlSession" />
+	</bean>
+	
+	<!-- Writer 설정 -->
+	<bean id="blackFridayWriter" class="org.mybatis.spring.batch.MyBatisBatchItemWriter">
+		<property name="statementId" value="insertBlackFridayForOracle" />
+		<property name="sqlSessionTemplate" ref="batchOracleSqlSessionTemplate" />
+	</bean>
+	
+	
+</beans>
