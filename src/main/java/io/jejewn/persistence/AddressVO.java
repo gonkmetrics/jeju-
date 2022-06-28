@@ -6,7 +6,7 @@ import lombok.Data;
 public class AddressVO {
 	
 	private Long addId;
-	private Long userId;
+	private Long uId;
 	private String addressLine1;
 	private String addressLine2;
 	private String city;

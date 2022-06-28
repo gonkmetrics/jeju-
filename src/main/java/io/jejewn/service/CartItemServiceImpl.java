@@ -15,8 +15,12 @@ public class CartItemServiceImpl implements CartItemService {
 	private CartItemMapper mapper;
 	
 	@Override
-	public List<CartItemVO> getCartItemList(Long ciId){
-		return mapper.getCartItemList(ciId);
+	public List<CartItemVO> getAllCartItemList(){
+		return mapper.getAllCartItemList();
+	}
+	@Override
+	public List<CartItemVO> getCartItemList(Long cId){
+		return mapper.getCartItemList(cId);
 	}
 	
 	@Override

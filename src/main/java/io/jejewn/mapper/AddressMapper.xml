@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.jejewn.AddressMapper">
+<mapper namespace="io.jejewn.mapper.AddressMapper">
 	<select id="getAddressList" resultType="io.jejewn.persistence.AddressVO">
 		SELECT * FROM address ORDER BY id DESC
 	</select>
@@ -10,7 +10,7 @@
 		INSERT INTO address
 		(id, user_id, address_line1, address_line2, city, postal_code, phone)
 			VALUES
-		(id.nextval, #{userId}, #{addressLine1}, #{addressLine2}, #{city}, #{postalCode}, #{phone})
+		(id.nextval, #{uId}, #{addressLine1}, #{addressLine2}, #{city}, #{postalCode}, #{phone})
 	</insert>
 	
 	<delete id="delete">
@@ -25,7 +25,7 @@
 			WHERE id = #{addId}
 	</update>
 	
-	<select id="addressDetail" resultType="id.jejewn.persistence.AddressVO">
+	<select id="addressDetail" resultType="io.jejewn.persistence.AddressVO">
 		SELECT * FROM address WHERE id = #{addId}
 	</select>
 </mapper>
