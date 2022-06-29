@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.jejuwn.mapper.AddressMapper">
+	<select id="getAddressList" resultType="io.jejuwn.persistence.AddressVO">
+		SELECT * FROM address ORDER BY id DESC
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO address
+		(id, user_id, address_line1, address_line2, city, postal_code, phone)
+			VALUES
+		(id.nextval, #{uId}, #{addressLine1}, #{addressLine2}, #{city}, #{postalCode}, #{phone})
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM address
+			WHERE id = #{addId}
+	</delete>
+	
+	<update id="update">
+		UPDATE address
+			SET
+		address_line1 = #{addressLine1}, address_line2 = #{addressLine2}, city = #{city}, postal_code = #{postalCode}, phone = #{phone}
+			WHERE id = #{addId}
+	</update>
+	
+	<select id="addressDetail" resultType="io.jejuwn.persistence.AddressVO">
+		SELECT * FROM address WHERE id = #{addId}
+	</select>
+</mapper>
