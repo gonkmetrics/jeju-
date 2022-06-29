@@ -9,7 +9,7 @@ import io.jejuwn.mapper.CartItemMapper;
 import io.jejuwn.persistence.CartItemVO;
 
 @Service
-public class CartItemServiceImpl implements CartItemService {
+public class CartItemServiceImpl implements CartItemService2 {
 	
 	@Autowired
 	private CartItemMapper mapper;
