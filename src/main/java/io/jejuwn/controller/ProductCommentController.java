@@ -1,5 +1,6 @@
 package io.jejuwn.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.jejuwn.persistence.ProductCommentVO;
+import io.jejuwn.model.ProductComment;
 import io.jejuwn.service.ProductCommentService;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -32,7 +32,7 @@ public class ProductCommentController {
 	@PostMapping(value="", consumes="application/json",
 							produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> insert(
-			@RequestBody ProductCommentVO vo){
+			@RequestBody ProductComment vo){
 		
 		ResponseEntity<String> entity = null;
 		try {
@@ -48,10 +48,10 @@ public class ProductCommentController {
 	@GetMapping(value="/all/{pId}",
 			produces= {MediaType.APPLICATION_XML_VALUE,
 						MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<ProductCommentVO>> list (
+	public ResponseEntity<List<ProductComment>> list (
 			@PathVariable("pId") Long pId) {
 		
-			ResponseEntity<List<ProductCommentVO>> entity = null;
+			ResponseEntity<List<ProductComment>> entity = null;
 			
 			try {
 				entity = new ResponseEntity<>(
@@ -87,12 +87,12 @@ public class ProductCommentController {
 					consumes="application/json",
 					produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> update (
-			@RequestBody ProductCommentVO vo,
+			@RequestBody ProductComment vo,
 			@PathVariable("pcId") Long pcId){
 		
 		ResponseEntity<String> entity = null;
 		try {
-			vo.setPcId(pcId);
+			vo.setProductId(BigDecimal.valueOf(pcId));
 			service.updateProductComment(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);

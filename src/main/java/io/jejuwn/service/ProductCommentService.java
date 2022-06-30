@@ -2,6 +2,8 @@ package io.jejuwn.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import io.jejuwn.model.ProductComment;
 
 public interface ProductCommentService {

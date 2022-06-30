@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.jejuwn.persistence.CartVO;
+import io.jejuwn.model.Cart;
 import io.jejuwn.service.CartService;
 import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 
-@Log4j
+@Log4j2
 @RestController
 @RequestMapping("/cart")
 public class CartController {
@@ -25,7 +26,7 @@ public class CartController {
 	@PostMapping(value="", consumes="application/json",
 							produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> insert(
-			@RequestBody CartVO vo){
+			@RequestBody Cart vo){
 		
 		ResponseEntity<String> entity = null;
 		try {

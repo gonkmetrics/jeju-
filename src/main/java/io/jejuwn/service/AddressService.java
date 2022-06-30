@@ -2,8 +2,8 @@ package io.jejuwn.service;
 
 import java.util.List;
 
-import io.jejuwn.model.Address;
 
+import io.jejuwn.model.Address;
 
 public interface AddressService {
 	

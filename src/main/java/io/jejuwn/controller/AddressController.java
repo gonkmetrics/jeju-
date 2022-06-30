@@ -1,5 +1,6 @@
 package io.jejuwn.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.jejuwn.persistence.AddressVO;
+import io.jejuwn.model.Address;
 import io.jejuwn.service.AddressService;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
@@ -33,7 +34,7 @@ public class AddressController {
 	@PostMapping(value="", consumes="application/json",
 							produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> insert(
-			@RequestBody AddressVO vo){
+			@RequestBody Address vo){
 		
 		ResponseEntity<String> entity = null;
 		try {
@@ -50,12 +51,12 @@ public class AddressController {
 					consumes="application/json",
 					produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> update (
-			@RequestBody AddressVO vo,
+			@RequestBody Address vo,
 			@PathVariable("addId") Long addId){
 		
 		ResponseEntity<String> entity = null;
 		try {
-			vo.setAddId(addId);
+			vo.setId(BigDecimal.valueOf(addId));
 			service.addressUpdate(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
@@ -85,8 +86,8 @@ public class AddressController {
 	@GetMapping(value="/list",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 						MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<AddressVO>> list() {
-		ResponseEntity<List<AddressVO>> entity = null;
+	public ResponseEntity<List<Address>> list() {
+		ResponseEntity<List<Address>> entity = null;
 		
 		try {
 			entity = new ResponseEntity<>(service.getAddressList(), HttpStatus.OK);
@@ -100,10 +101,10 @@ public class AddressController {
 	@GetMapping(value="/detail/{addId}",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<AddressVO> detail (
+	public ResponseEntity<Address> detail (
 			@PathVariable("addId") Long addId) {
 			
-		ResponseEntity<AddressVO> entity = null;
+		ResponseEntity<Address> entity = null;
 		
 		try {
 			entity = new ResponseEntity<>(service.addressDetail(addId), HttpStatus.OK);
