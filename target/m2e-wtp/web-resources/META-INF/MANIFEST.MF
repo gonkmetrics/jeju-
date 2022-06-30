@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
-Built-By: ict03-12￬ﾘﾤ￭ﾛﾄ￫ﾰﾘ
-Build-Jdk: 11.0.15
+Build-Jdk-Spec: 11
+Implementation-Title: jejuwn_b
+Implementation-Version: 0.0.1-SNAPSHOT
 Created-By: Maven Integration for Eclipse
 

@@ -1,36 +1,37 @@
 package io.jejuwn.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.jejuwn.mapper.CartItemMapper;
-import io.jejuwn.persistence.CartItemVO;
+import io.jejuwn.model.CartItem;
 
 @Service
-public class CartItemServiceImpl implements CartItemService2 {
+public class CartItemServiceImpl implements CartItemService {
 	
 	@Autowired
 	private CartItemMapper mapper;
 	
 	@Override
-	public List<CartItemVO> getAllCartItemList(){
-		return mapper.getAllCartItemList();
+	public List<CartItem> getAllCartItemList(){
+		return mapper.selectByExample(null);
 	}
 	@Override
-	public List<CartItemVO> getCartItemList(Long cId){
-		return mapper.getCartItemList(cId);
+	public CartItem getCartItemList(Long id){
+		return mapper.selectByPrimaryKey(BigDecimal.valueOf(id));
 	}
 	
 	@Override
-	public void carItemInsert(CartItemVO vo) {
+	public void carItemInsert(CartItem vo) {
 		mapper.insert(vo);
 	}
 	
 	@Override
-	public void cartItemDelete(Long ciId) {
-		mapper.delete(ciId);
+	public void cartItemDelete(Long id) {
+		mapper.deleteByPrimaryKey(BigDecimal.valueOf(id));
 	}
 	
 

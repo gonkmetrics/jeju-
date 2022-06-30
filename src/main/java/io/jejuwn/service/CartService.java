@@ -2,16 +2,18 @@ package io.jejuwn.service;
 
 import java.util.List;
 
-import io.jejuwn.persistence.CartVO;
+import org.springframework.stereotype.Service;
+
+import io.jejuwn.model.Cart;
 
 public interface CartService {
 	
 	// 카트 리스트 전부를 불러오는 메서드
-	public List<CartVO> getAllCartList();
+	public List<Cart> getAllCartList();
 	// 내 카트 리스트 불러오는 메서드
-	public List<CartVO> getCartList(Long cId);
+	public Cart getCartList(Long id);
 	
-	public void cartInsert(CartVO vo);
+	public void cartInsert(Cart vo);
 	
-	public void cartDelete(Long cId);
+	public void cartDelete(Long id);
 }

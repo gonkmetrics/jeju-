@@ -1,41 +1,42 @@
 package io.jejuwn.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.jejuwn.mapper.UserMapper;
-import io.jejuwn.persistence.UserVO;
+import io.jejuwn.mapper.UsertblMapper;
+import io.jejuwn.model.Usertbl;
 
 @Service
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
-	private UserMapper mapper;
+	private UsertblMapper mapper;
 	
 	@Override
-	public List<UserVO> listUser() {
-		return mapper.getList();
+	public List<Usertbl> listUser() {
+		return mapper.selectByExample(null);
 	}
 	
 	@Override
-	public void insertUser(UserVO vo) {
+	public void insertUser(Usertbl vo) {
 		mapper.insert(vo);
 	}
 	
 	@Override
 	public void deleteUser(Long id) {
-		mapper.delete(id);
+		mapper.deleteByPrimaryKey(BigDecimal.valueOf(id));
 	}
 	
 	@Override
-	public UserVO userDetail(Long id) {
-		return mapper.userDetail(id);
+	public Usertbl userDetail(Long id) {
+		return mapper.selectByPrimaryKey(BigDecimal.valueOf(id));
 	}
 	
-	public void updateUser(UserVO vo) {
-		mapper.update(vo);
+	public void updateUser(Usertbl vo) {
+		mapper.updateByPrimaryKey(vo);
 	}
 
 }
