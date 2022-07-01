@@ -3,7 +3,9 @@ package io.jejuwn.controller;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,8 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RestController
+@SpringBootApplication
+@MapperScan(value = {"io.jejuwn.mapper"})
 @RequestMapping("/address")
 public class AddressController {
 	
