@@ -16,27 +16,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.jejuwn.model.Usertbl;
-import io.jejuwn.service.UsertblService;
+import io.jejuwn.model.ProductInfo;
+import io.jejuwn.service.ProductInfoService;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RestController
-@RequestMapping("/user")
-public class UserController {
-			
+@RequestMapping("/productinfo")
+public class ProductInfoController {
+	
 	@Autowired
-	private UsertblService service;
+	private ProductInfoService service;
 	
 	// insert
 	@PostMapping(value="", consumes="application/json",
 							produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> insert(
-			@RequestBody Usertbl vo){
+			@RequestBody ProductInfo vo){
 		
 		ResponseEntity<String> entity = null;
 		try {
-			service.insertUser(vo);
+			service.productInfoInsert(vo);
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch(Exception e) {
 			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -49,13 +49,13 @@ public class UserController {
 					consumes="application/json",
 					produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> update (
-			@RequestBody Usertbl vo,
+			@RequestBody ProductInfo vo,
 			@PathVariable("id") Long id){
 		
 		ResponseEntity<String> entity = null;
 		try {
 			vo.setId(BigDecimal.valueOf(id));
-			service.updateUser(vo);
+			service.productInfoUpdate(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch(Exception e) {
@@ -73,43 +73,44 @@ public class UserController {
 				
 				try {
 					
-					service.deleteUser(id);
+					service.productInfoDelete(id);
 					entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 				} catch(Exception e) {
 					entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 				}
 				return entity;
 			}
-	// 유저 전체를 가져오는 메서드
+	// 상품 정보 전체를 가져오는 메서드
 	@GetMapping(value="/list",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 						MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<Usertbl>> list() {
-		ResponseEntity<List<Usertbl>> entity = null;
+	public ResponseEntity<List<ProductInfo>> list() {
+		ResponseEntity<List<ProductInfo>> entity = null;
 		
 		try {
-			entity = new ResponseEntity<>(service.listUser(), HttpStatus.OK);
+			entity = new ResponseEntity<>(service.getProductInfoList(), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
-	// 한 유저의 정보만 보는 메서드
+	// 특정 상품 정보만 보는 메서드
 	@GetMapping(value="/detail/{id}",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<Usertbl> detail (
+	public ResponseEntity<ProductInfo> detail (
 			@PathVariable("id") Long id) {
 			
-		ResponseEntity<Usertbl> entity = null;
+		ResponseEntity<ProductInfo> entity = null;
 		
 		try {
-			entity = new ResponseEntity<>(service.userDetail(id), HttpStatus.OK);
+			entity = new ResponseEntity<>(service.productInfoDetail(id), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
+
 }

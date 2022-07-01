@@ -10,7 +10,7 @@ import io.jejuwn.mapper.UsertblMapper;
 import io.jejuwn.model.Usertbl;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UsertblServiceImpl implements UsertblService {
 	
 	@Autowired
 	private UsertblMapper mapper;
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 	public Usertbl userDetail(Long id) {
 		return mapper.selectByPrimaryKey(BigDecimal.valueOf(id));
 	}
-	
+	@Override
 	public void updateUser(Usertbl vo) {
 		mapper.updateByPrimaryKey(vo);
 	}

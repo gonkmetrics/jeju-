@@ -45,17 +45,17 @@ public class ProductCommentController {
 	}
 	
 	// 특정 글의 댓글을 불러오는 메서드
-	@GetMapping(value="/all/{pId}",
+	@GetMapping(value="/all/{product_id}",
 			produces= {MediaType.APPLICATION_XML_VALUE,
 						MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<ProductComment>> list (
-			@PathVariable("pId") Long pId) {
+			@PathVariable("product_id") Long product_id) {
 		
 			ResponseEntity<List<ProductComment>> entity = null;
 			
 			try {
 				entity = new ResponseEntity<>(
-						service.getProductCommentList(pId), HttpStatus.OK);			
+						service.getProductCommentList(product_id), HttpStatus.OK);			
 			} catch(Exception e) {
 				e.printStackTrace();
 				entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

@@ -11,7 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import io.jejuwn.model.Usertbl;
-import io.jejuwn.service.UserService;
+import io.jejuwn.service.UsertblService;
 import lombok.extern.log4j.Log4j2;
 
 @SpringBootTest
@@ -21,7 +21,7 @@ import lombok.extern.log4j.Log4j2;
 public class UserServiceTest {
 	
 	@Autowired
-	private UserService service;
+	private UsertblService service;
 	
 	//@Test
 	public void testGetList() {

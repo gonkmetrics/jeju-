@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import io.jejuwn.model.Usertbl;
 
-public interface UserService {
+public interface UsertblService {
 	
 	// 유저리스트 불러오는 기능
 	public List<Usertbl> listUser();

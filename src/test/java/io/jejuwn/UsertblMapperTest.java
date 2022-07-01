@@ -23,7 +23,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class UsertblMapperTest {
 	
-	@Test
+	//@Test
 	public void calculate1Plus1Gives2() {
 		assertEquals(1+1,2);
 	}
@@ -32,7 +32,7 @@ public class UsertblMapperTest {
 	@Autowired
 	private UsertblMapper mapper;
 	
-	@Test
+	//@Test
 	  public void contextLoads() {
 	    log.info(mapper);
 	  }
