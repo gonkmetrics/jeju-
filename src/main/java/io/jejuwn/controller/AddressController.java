@@ -26,8 +26,6 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RestController
-@SpringBootApplication
-@MapperScan(value = {"io.jejuwn.mapper"})
 @RequestMapping("/address")
 public class AddressController {
 	

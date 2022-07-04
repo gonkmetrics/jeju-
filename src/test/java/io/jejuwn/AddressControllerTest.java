@@ -27,8 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 
 @AutoConfigureMockMvc
-@ContextConfiguration(classes = {AddressController.class})
-@ComponentScan({"io.jejuwn.service"})
+@ContextConfiguration(classes = {AddressController.class, AddressService.class, AddressMapper.class})
 @WebMvcTest
 @Log4j2
 public class AddressControllerTest {
