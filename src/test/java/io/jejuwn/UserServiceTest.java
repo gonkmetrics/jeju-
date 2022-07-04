@@ -32,17 +32,29 @@ public class UserServiceTest {
 	public void testInsert() {
 		Usertbl vo = new Usertbl();
 		
-		vo.setId(BigDecimal.valueOf(2));
-		vo.setName("바바밥");
-		vo.setNick("고고고");
+		vo.setId(BigDecimal.valueOf(3));
+		vo.setName("eewqq");
+		vo.setNick("구구구");
 		vo.setPass("1111");
 		vo.setGender(BigDecimal.valueOf(1));
-		vo.setAge(BigDecimal.valueOf(20));
-		vo.setEmail("2222222@222.com");
+		vo.setAge(BigDecimal.valueOf(21));
+		vo.setEmail("222213222@2332.com");
 		vo.setRole(BigDecimal.valueOf(1));
 		
 		service.insertUser(vo);
 		log.info(service.listUser());
+	}
+	
+	//@Test
+	public void testDelete() {
+		service.deleteUser(1L);
+		
+	}
+	
+	//@Test
+	public void testuserDetail() {
+		service.userDetail(1L);
+		
 	}
 
 }

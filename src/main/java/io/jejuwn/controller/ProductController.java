@@ -24,7 +24,7 @@ import lombok.extern.log4j.Log4j2;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-	
+/*
 	@Autowired
 	private ProductService service;
 	
@@ -112,5 +112,5 @@ public class ProductController {
 		}
 		return entity;
 	}
-
+*/
 }

@@ -4,10 +4,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import io.jejuwn.mapper.ProductInfoMapper;
 import io.jejuwn.model.ProductInfo;
 
+@Service
 public class ProductInfoServiceImpl implements ProductInfoService {
 	
 	@Autowired
