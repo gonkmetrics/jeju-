@@ -10,7 +10,7 @@ import io.jejuwn.service.AddressServiceImpl;
 public class ContextConfig {
 	
 	@Bean
-	@Qualifier("AddressService")
+	@Qualifier("ads1")
 	AddressServiceImpl addressService() {
 		return new AddressServiceImpl();
 	}

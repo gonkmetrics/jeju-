@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,7 @@ import lombok.extern.log4j.Log4j2;
 public class AddressController {
 	
 	@Autowired
+	@Qualifier("ads1")
 	private AddressService service;
 	
 	// insert
