@@ -45,29 +45,17 @@ public class ProductCommentController {
 	}
 	
 	// 특정 글의 댓글을 불러오는 메서드
-<<<<<<< HEAD
 	@GetMapping(value="/all/{productId}",
 			produces= {MediaType.APPLICATION_XML_VALUE,
 						MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<ProductComment>> list (
 			@PathVariable("productId") Long productId) {
-=======
-	@GetMapping(value="/all/{pId}",
-			produces= {MediaType.APPLICATION_XML_VALUE,
-						MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<ProductComment>> list (
-			@PathVariable("pId") Long pId) {
->>>>>>> origin/merge_prep
 		
 			ResponseEntity<List<ProductComment>> entity = null;
 			
 			try {
 				entity = new ResponseEntity<>(
-<<<<<<< HEAD
 						service.getProductCommentList(productId), HttpStatus.OK);			
-=======
-						service.getProductCommentList(pId), HttpStatus.OK);			
->>>>>>> origin/merge_prep
 			} catch(Exception e) {
 				e.printStackTrace();
 				entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -76,26 +64,15 @@ public class ProductCommentController {
 			}
 	
 	// delete
-<<<<<<< HEAD
 	@DeleteMapping(value="/{id}",
 					produces = {MediaType.TEXT_PLAIN_VALUE})
 		public ResponseEntity<String> delete(
 				@PathVariable("id") Long id) {
-=======
-	@DeleteMapping(value="/{pcId}",
-					produces = {MediaType.TEXT_PLAIN_VALUE})
-		public ResponseEntity<String> delete(
-				@PathVariable("pcId") Long pcId) {
->>>>>>> origin/merge_prep
 		ResponseEntity<String> entity = null;
 		
 		try {
 			
-<<<<<<< HEAD
 			service.deleteProdcutComment(id);
-=======
-			service.deleteProdcutComment(pcId);
->>>>>>> origin/merge_prep
 			entity = new ResponseEntity<String>(
 					"SUCCESS", HttpStatus.OK);
 		} catch(Exception e) {
@@ -106,28 +83,16 @@ public class ProductCommentController {
 	
 	// update
 	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH},
-<<<<<<< HEAD
 					value="/{id}",
-=======
-					value="/{pcId}",
->>>>>>> origin/merge_prep
 					consumes="application/json",
 					produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> update (
 			@RequestBody ProductComment vo,
-<<<<<<< HEAD
 			@PathVariable("id") Long id){
 		
 		ResponseEntity<String> entity = null;
 		try {
 			vo.setProductId(BigDecimal.valueOf(id));
-=======
-			@PathVariable("pcId") Long pcId){
-		
-		ResponseEntity<String> entity = null;
-		try {
-			vo.setProductId(BigDecimal.valueOf(pcId));
->>>>>>> origin/merge_prep
 			service.updateProductComment(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
