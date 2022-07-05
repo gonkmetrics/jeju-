@@ -134,4 +134,11 @@ public class Promotion {
     public void setProductId(BigDecimal productId) {
         this.productId = productId;
     }
+
+	@Override
+	public String toString() {
+		return "Promotion [id=" + id + ", code=" + code + ", promotionValueDec=" + promotionValueDec
+				+ ", promotionValueAbs=" + promotionValueAbs + ", productId=" + productId + "]";
+	}
+    
 }

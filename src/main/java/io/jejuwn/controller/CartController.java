@@ -75,7 +75,7 @@ public class CartController {
 		return entity;
 	}
 	// 한 유저의 장바구니 불러오는 메서드
-	@GetMapping(value="/all/{userId}",
+	@GetMapping(value="/list/{userId}",
 			produces= {MediaType.APPLICATION_XML_VALUE,
 						MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<Cart>> list (

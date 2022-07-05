@@ -267,4 +267,12 @@ public class Reservation {
     public void setProductId(BigDecimal productId) {
         this.productId = productId;
     }
+
+	@Override
+	public String toString() {
+		return "Reservation [id=" + id + ", name=" + name + ", regdate=" + regdate + ", userId=" + userId
+				+ ", reservation=" + reservation + ", reservationDate=" + reservationDate + ", status=" + status
+				+ ", productId=" + productId + "]";
+	}
+    
 }

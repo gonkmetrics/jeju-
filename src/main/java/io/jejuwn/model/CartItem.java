@@ -167,4 +167,11 @@ public class CartItem {
     public void setCategory(BigDecimal category) {
         this.category = category;
     }
+
+	@Override
+	public String toString() {
+		return "CartItem [id=" + id + ", item=" + item + ", cartId=" + cartId + ", productId=" + productId
+				+ ", category=" + category + "]";
+	}
+    
 }

@@ -60,7 +60,7 @@ public class ProductLikeController {
 					return entity;
 				}
 		// 내 찜목록 불러오는 메서드
-		@GetMapping(value="/all/{userId}",
+		@GetMapping(value="/list/{userId}",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
 		public ResponseEntity<List<ProductLike>> list (

@@ -266,4 +266,11 @@ public class Usertbl {
     public void setRole(BigDecimal role) {
         this.role = role;
     }
+
+	@Override
+	public String toString() {
+		return "Usertbl [id=" + id + ", name=" + name + ", nick=" + nick + ", pass=" + pass + ", gender=" + gender
+				+ ", age=" + age + ", email=" + email + ", role=" + role + "]";
+	}
+    
 }

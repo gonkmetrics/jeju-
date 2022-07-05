@@ -67,6 +67,6 @@ public class ProductServiceTest {
 	// 상품 한개의 정보 보기
 	@Test
 	public void testProductDetail() {
-		service.productDetail(1L);
+		log.info(service.productDetail(1L));
 	}
 }

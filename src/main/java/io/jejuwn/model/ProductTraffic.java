@@ -167,4 +167,11 @@ public class ProductTraffic {
     public void setKeyword(String keyword) {
         this.keyword = keyword;
     }
+
+	@Override
+	public String toString() {
+		return "ProductTraffic [id=" + id + ", latitude=" + latitude + ", longitude=" + longitude + ", productId="
+				+ productId + ", keyword=" + keyword + "]";
+	}
+    
 }

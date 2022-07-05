@@ -71,7 +71,7 @@ public class UserOrderServiceTest {
 	// 한 유저의 주문내역 보기
 	@Test
 	public void testUserOrderList() {
-		
+		log.info(service.userOrderList(2L));
 	}
 
 }

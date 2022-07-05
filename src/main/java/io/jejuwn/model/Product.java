@@ -167,4 +167,11 @@ public class Product {
     public void setRegion(BigDecimal region) {
         this.region = region;
     }
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", category=" + category + ", userId=" + userId + ", region="
+				+ region + "]";
+	}
+    
 }

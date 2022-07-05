@@ -234,4 +234,11 @@ public class ProductComment {
     public void setRating(BigDecimal rating) {
         this.rating = rating;
     }
+
+	@Override
+	public String toString() {
+		return "ProductComment [id=" + id + ", content=" + content + ", userId=" + userId + ", productId=" + productId
+				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", rating=" + rating + "]";
+	}
+    
 }

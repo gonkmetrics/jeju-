@@ -399,4 +399,13 @@ public class ProductInfo {
     public void setAddress(String address) {
         this.address = address;
     }
+
+	@Override
+	public String toString() {
+		return "ProductInfo [id=" + id + ", productId=" + productId + ", content=" + content + ", contentExtra="
+				+ contentExtra + ", regdate=" + regdate + ", updatedate=" + updatedate + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", price=" + price + ", hit=" + hit + ", maxCapacity=" + maxCapacity
+				+ ", address=" + address + "]";
+	}
+    
 }

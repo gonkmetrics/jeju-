@@ -101,4 +101,10 @@ public class ProductLike {
     public void setProductId(BigDecimal productId) {
         this.productId = productId;
     }
+
+	@Override
+	public String toString() {
+		return "ProductLike [id=" + id + ", userId=" + userId + ", productId=" + productId + "]";
+	}
+    
 }

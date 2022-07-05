@@ -233,4 +233,11 @@ public class UserOrder {
     public void setPromotionId(BigDecimal promotionId) {
         this.promotionId = promotionId;
     }
+
+	@Override
+	public String toString() {
+		return "UserOrder [id=" + id + ", token=" + token + ", userId=" + userId + ", cartId=" + cartId + ", addressId="
+				+ addressId + ", status=" + status + ", promotionId=" + promotionId + "]";
+	}
+    
 }

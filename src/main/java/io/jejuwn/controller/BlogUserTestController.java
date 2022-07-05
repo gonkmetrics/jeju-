@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,31 +14,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.jejuwn.model.Address;
-import io.jejuwn.service.AddressService;
+import io.jejuwn.model.BlogUserTest;
+import io.jejuwn.service.BlogUserTestService;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RestController
-@RequestMapping("/address")
-public class AddressController {
+@RequestMapping("/bloguser")
+public class BlogUserTestController {
 	
 	@Autowired
-	@Qualifier("ads1")
-	private AddressService service;
+	private BlogUserTestService service;
 	
 	// insert
 	@PostMapping(value="", consumes="application/json",
 							produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> insert(
-			@RequestBody Address vo){
+			@RequestBody BlogUserTest vo){
 		
 		ResponseEntity<String> entity = null;
 		try {
-			service.addressInsert(vo);
+			service.blogUserInsert(vo);
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch(Exception e) {
 			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -52,13 +49,13 @@ public class AddressController {
 					consumes="application/json",
 					produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> update (
-			@RequestBody Address vo,
+			@RequestBody BlogUserTest vo,
 			@PathVariable("id") Long id){
 		
 		ResponseEntity<String> entity = null;
 		try {
 			vo.setId(BigDecimal.valueOf(id));
-			service.addressUpdate(vo);
+			service.blogUserUpdate(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch(Exception e) {
@@ -76,44 +73,46 @@ public class AddressController {
 				
 				try {
 					
-					service.addressDelete(id);
+					service.blogUserDelete(id);
 					entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 				} catch(Exception e) {
 					entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 				}
 				return entity;
 			}
-	// address 전체를 가져오는 메서드
+	
+	// blogUser 전체 리스트
 	@GetMapping(value="/list",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 						MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<Address>> list() {
-		ResponseEntity<List<Address>> entity = null;
+	public ResponseEntity<List<BlogUserTest>> list() {
+		ResponseEntity<List<BlogUserTest>> entity = null;
 		
 		try {
-			entity = new ResponseEntity<>(service.getAddressList(), HttpStatus.OK);
+			entity = new ResponseEntity<>(service.getAllBlogUserList(), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
-	// 특정 address만 보는 메서드
-	@GetMapping(value="/detail/{userId}",
+	
+	// 한 블로그유저만 보는 메서드
+	/* @GetMapping(value="/detail/{id}",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<Address> detail (
-			@PathVariable("userId") Long userId) {
+	public ResponseEntity<BlogUserTest> detail (
+			@PathVariable("id") Long id) {
 			
-		ResponseEntity<Address> entity = null;
+		ResponseEntity<BlogUserTest> entity = null;
 		
 		try {
-			entity = new ResponseEntity<>(service.addressDetail(userId), HttpStatus.OK);
+			entity = new ResponseEntity<>(service.blogUserDetail(id), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
-	}
+	} */
 
 }
