@@ -101,4 +101,10 @@ public class Cart {
     public void setUserId(BigDecimal userId) {
         this.userId = userId;
     }
+
+	@Override
+	public String toString() {
+		return "Cart [id=" + id + ", token=" + token + ", userId=" + userId + "]";
+	}
+    
 }

@@ -233,4 +233,11 @@ public class Address {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", userId=" + userId + ", addressLine1=" + addressLine1 + ", addressLine2="
+				+ addressLine2 + ", city=" + city + ", postalCode=" + postalCode + ", phone=" + phone + "]";
+	}
+    
 }

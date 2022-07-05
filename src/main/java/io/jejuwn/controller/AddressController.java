@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.jejuwn.model.Address;
 import io.jejuwn.service.AddressService;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2

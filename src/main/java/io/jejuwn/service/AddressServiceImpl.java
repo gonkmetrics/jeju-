@@ -5,16 +5,19 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import io.jejuwn.mapper.AddressMapper;
 import io.jejuwn.model.Address;
 
 @Service
+@Primary
 public class AddressServiceImpl implements AddressService {
 	
+	
 	@Autowired
-	AddressMapper mapper;
+	private AddressMapper mapper;
 	
 	@Override
 	public List<Address> getAddressList() {

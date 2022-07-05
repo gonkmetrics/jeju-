@@ -52,7 +52,7 @@ public class UserServiceTest {
 	
 	//@Test
 	public void testUserDetail() {
-		service.userDetail(1L);
+		log.info(service.userDetail(1L));
 		
 	}
 
