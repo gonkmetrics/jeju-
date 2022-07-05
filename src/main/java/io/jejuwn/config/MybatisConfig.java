@@ -13,18 +13,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
-//@Configuration
+@Configuration
 @MapperScan(value= {"io.jejuwn.mapper"})
 //@EnableTransactionManagement
 public class MybatisConfig {
 	
-	@Bean
+	//@Bean
 	public DataSource customDs() {
 		return DataSourceBuilder.create()
 				.url("jdbc:oracle:thin:@//localhost:1522/XEPDB1")
 				.driverClassName("oracle.jdbc.OracleDriver")
-				.username("JTEST")
-				.password("123")
+				.username("jejutest")
+				.password("jejutest")
 				.build();
 	}
 	

@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
+import org.mybatis.spring.boot.test.autoconfigure.AutoConfigureMybatis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -15,14 +16,17 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import io.jejuwn.controller.AddressController;
+import io.jejuwn.mapper.AddressMapper;
+import io.jejuwn.service.AddressServiceImpl;
 import lombok.extern.log4j.Log4j2;
 
 @AutoConfigureMockMvc
-@ContextConfiguration()
-@WebMvcTest
+//@ContextConfiguration
+@WebMvcTest(AddressController.class)
 @Log4j2
-@AutoConfigureMybatis
-@Import(TestServiceImpl.class)
+//@AutoConfigureMybatis
+@Import({AddressServiceImpl.class})
 public class ControllerTestTemplate {
 	
 	//@Test
