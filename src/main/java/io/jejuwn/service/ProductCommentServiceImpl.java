@@ -16,7 +16,11 @@ public class ProductCommentServiceImpl implements ProductCommentService {
 	private ProductCommentMapper mapper;
 	
 	@Override
+<<<<<<< HEAD
 	public List<ProductComment> getProductCommentList(Long productId){
+=======
+	public List<ProductComment> getProductCommentList(Long pId){
+>>>>>>> origin/merge_prep
 		return mapper.selectByExample(null);
 	}
 	
@@ -30,8 +34,13 @@ public class ProductCommentServiceImpl implements ProductCommentService {
 		mapper.updateByPrimaryKey(vo);
 	}
 	@Override
+<<<<<<< HEAD
 	public void deleteProdcutComment(Long id) {
 		mapper.deleteByPrimaryKey(BigDecimal.valueOf(id));
+=======
+	public void deleteProdcutComment(Long pId) {
+		mapper.deleteByPrimaryKey(BigDecimal.valueOf(pId));
+>>>>>>> origin/merge_prep
 	}
 
 }

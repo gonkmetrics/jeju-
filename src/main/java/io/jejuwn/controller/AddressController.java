@@ -3,7 +3,14 @@ package io.jejuwn.controller;
 import java.math.BigDecimal;
 import java.util.List;
 
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
+=======
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+>>>>>>> origin/merge_prep
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +34,20 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/address")
 public class AddressController {
 	
+<<<<<<< HEAD
 	@Autowired
 	private AddressService service;
 	
+=======
+	private AddressService service;
+	
+	@Autowired
+	@Qualifier("AddressService")
+	private void setAddressService(AddressService service) {
+		this.service = service;
+	};
+	
+>>>>>>> origin/merge_prep
 	// insert
 	@PostMapping(value="", consumes="application/json",
 							produces= {MediaType.TEXT_PLAIN_VALUE})
@@ -47,16 +65,28 @@ public class AddressController {
 	}
 	// update
 	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH},
+<<<<<<< HEAD
 					value="/{id}",
+=======
+					value="/{addId}",
+>>>>>>> origin/merge_prep
 					consumes="application/json",
 					produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> update (
 			@RequestBody Address vo,
+<<<<<<< HEAD
 			@PathVariable("id") Long id){
 		
 		ResponseEntity<String> entity = null;
 		try {
 			vo.setId(BigDecimal.valueOf(id));
+=======
+			@PathVariable("addId") Long addId){
+		
+		ResponseEntity<String> entity = null;
+		try {
+			vo.setId(BigDecimal.valueOf(addId));
+>>>>>>> origin/merge_prep
 			service.addressUpdate(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
@@ -67,15 +97,26 @@ public class AddressController {
 		return entity;
 	}
 	// delete
+<<<<<<< HEAD
 	@DeleteMapping(value="/{id}",
 							produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String>  delete(
 			@PathVariable("id") Long id) {
+=======
+	@DeleteMapping(value="/{addId}",
+							produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String>  delete(
+			@PathVariable("addId") Long addId) {
+>>>>>>> origin/merge_prep
 				ResponseEntity<String> entity = null;
 				
 				try {
 					
+<<<<<<< HEAD
 					service.addressDelete(id);
+=======
+					service.addressDelete(addId);
+>>>>>>> origin/merge_prep
 					entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 				} catch(Exception e) {
 					entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -98,16 +139,28 @@ public class AddressController {
 		return entity;
 	}
 	// 특정 address만 보는 메서드
+<<<<<<< HEAD
 	@GetMapping(value="/detail/{userId}",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<Address> detail (
 			@PathVariable("userId") Long userId) {
+=======
+	@GetMapping(value="/detail/{addId}",
+				produces= {MediaType.APPLICATION_XML_VALUE,
+							MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<Address> detail (
+			@PathVariable("addId") Long addId) {
+>>>>>>> origin/merge_prep
 			
 		ResponseEntity<Address> entity = null;
 		
 		try {
+<<<<<<< HEAD
 			entity = new ResponseEntity<>(service.addressDetail(userId), HttpStatus.OK);
+=======
+			entity = new ResponseEntity<>(service.addressDetail(addId), HttpStatus.OK);
+>>>>>>> origin/merge_prep
 		} catch(Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

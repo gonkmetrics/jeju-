@@ -21,8 +21,13 @@ public class CartServiceImpl implements CartService {
 	}
 	
 	@Override
+<<<<<<< HEAD
 	public List<Cart> getCartList(Long userId){
 		return mapper.selectByExample(null);
+=======
+	public Cart getCartList(Long cId){
+		return mapper.selectByPrimaryKey(BigDecimal.valueOf(cId));
+>>>>>>> origin/merge_prep
 	}
 	
 	@Override
@@ -31,8 +36,13 @@ public class CartServiceImpl implements CartService {
 	}
 	
 	@Override
+<<<<<<< HEAD
 	public void cartDelete(Long id) {
 		mapper.deleteByPrimaryKey(BigDecimal.valueOf(id));
+=======
+	public void cartDelete(Long cId) {
+		mapper.deleteByPrimaryKey(BigDecimal.valueOf(cId));
+>>>>>>> origin/merge_prep
 	}
 
 }

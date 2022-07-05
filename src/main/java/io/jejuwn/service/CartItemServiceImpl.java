@@ -19,10 +19,17 @@ public class CartItemServiceImpl implements CartItemService {
 	public List<CartItem> getAllCartItemList(){
 		return mapper.selectByExample(null);
 	}
+<<<<<<< HEAD
 	/*@Override
 	public CartItem getCartItemList(Long cartId){
 		return mapper.selectByPrimaryKey(BigDecimal.valueOf(cartId));
 	} */
+=======
+	@Override
+	public CartItem getCartItemList(Long cId){
+		return mapper.selectByPrimaryKey(BigDecimal.valueOf(cId));
+	}
+>>>>>>> origin/merge_prep
 	
 	@Override
 	public void carItemInsert(CartItem vo) {
@@ -30,8 +37,13 @@ public class CartItemServiceImpl implements CartItemService {
 	}
 	
 	@Override
+<<<<<<< HEAD
 	public void cartItemDelete(Long id) {
 		mapper.deleteByPrimaryKey(BigDecimal.valueOf(id));
+=======
+	public void cartItemDelete(Long ciId) {
+		mapper.deleteByPrimaryKey(BigDecimal.valueOf(ciId));
+>>>>>>> origin/merge_prep
 	}
 	
 

@@ -14,13 +14,22 @@ public interface AddressService {
 	public void addressInsert(Address vo);
 	
 	// 유저 주소 삭제
+<<<<<<< HEAD
 	public void addressDelete(Long id);
+=======
+	public void addressDelete(Long addId);
+>>>>>>> origin/merge_prep
 	
 	// 유저 주소 수정
 	public void addressUpdate(Address vo);
 	
+<<<<<<< HEAD
 	// 유저 주소 상세 보기
 	public Address addressDetail(Long userId);
+=======
+	// 유저 정보 상세 보기
+	public Address addressDetail(Long addId);
+>>>>>>> origin/merge_prep
 	
 	
 }

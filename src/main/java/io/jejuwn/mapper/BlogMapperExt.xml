@@ -12,5 +12,32 @@
 	    updatedate date default sysdate,
 	    PRIMARY KEY(id)
         ) 
+=======
+    <insert id="createBlogTable" parameterType="java.math.BigDecimal" statementType="CALLABLE"> 
+		DECLARE
+		    query varchar2(500);
+		    tablename varchar2(100);
+		    uid number(38,0);
+		BEGIN
+		uid := ${id};
+		tablename := 'blog_user_'||uid||'';
+		query := 'CREATE TABLE '||tablename||' (
+		    id number(38,0),
+		    user_id number(38,0),
+		    title varchar2(100) not null,
+		    content varchar2(280) not null,
+		    regdate date default sysdate,
+		    updatedate date default sysdate,
+		    PRIMARY KEY(id)
+		)';
+		dbms_output.put_line(query);
+		EXECUTE IMMEDIATE 'SELECT * FROM '||tablename||'';
+		EXCEPTION
+		WHEN OTHERS THEN
+		IF SQLCODE = -942 THEN
+		EXECUTE IMMEDIATE query;
+		END IF;
+		END;
+>>>>>>> origin/merge_prep
     </insert>
 </mapper>
