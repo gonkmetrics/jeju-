@@ -8,8 +8,8 @@ import io.jejuwn.model.ProductComment;
 
 public interface ProductCommentService {
 		
-	// id 번의 댓글 전체 가져오는 기능
-	public List<ProductComment> getProductCommentList(Long product_id);
+	// product_id 번의 댓글 전체 가져오는 기능
+	public List<ProductComment> getProductCommentList(Long productId);
 	
 	// 댓글 추가 기능
 	public void insertProductComment(ProductComment vo);

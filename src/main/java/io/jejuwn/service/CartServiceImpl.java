@@ -21,8 +21,8 @@ public class CartServiceImpl implements CartService {
 	}
 	
 	@Override
-	public Cart getCartList(Long id){
-		return mapper.selectByPrimaryKey(BigDecimal.valueOf(id));
+	public List<Cart> getCartList(Long userId){
+		return mapper.selectByExample(null);
 	}
 	
 	@Override

@@ -60,17 +60,17 @@ public class ProductLikeController {
 					return entity;
 				}
 		// 내 찜목록 불러오는 메서드
-		@GetMapping(value="/all/{user_id}",
+		@GetMapping(value="/all/{userId}",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
 		public ResponseEntity<List<ProductLike>> list (
-				@PathVariable("user_id") Long user_id) {
+				@PathVariable("userId") Long userId) {
 			
 				ResponseEntity<List<ProductLike>> entity = null;
 				
 				try {
 					entity = new ResponseEntity<>(
-							service.getProductLikeList(user_id), HttpStatus.OK);			
+							service.getProductLikeList(userId), HttpStatus.OK);			
 				} catch(Exception e) {
 					e.printStackTrace();
 					entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

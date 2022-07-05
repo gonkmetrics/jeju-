@@ -1,6 +1,7 @@
 package io.jejuwn;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,50 +11,41 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import io.jejuwn.model.Usertbl;
-import io.jejuwn.service.UsertblService;
+import io.jejuwn.model.ProductLike;
+import io.jejuwn.service.ProductLikeService;
 import lombok.extern.log4j.Log4j2;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @RunWith(SpringRunner.class)
 @Log4j2
-public class UserServiceTest {
+public class ProductLikeServiceTest {
 	
 	@Autowired
-	private UsertblService service;
+	private ProductLikeService service;
 	
+	// 내 찜 불러오는 메서드
 	//@Test
-	public void testGetList() {
-		log.info(service.listUser());
+	public void testGetProductLikeList() {
+		log.info(service.getProductLikeList(1L));
 	}
 	
+	// 찜 생성
 	//@Test
-	public void testInsert() {
-		Usertbl vo = new Usertbl();
+	public void testProductLikeInsert() {
+		ProductLike vo = new ProductLike();
 		
 		vo.setId(BigDecimal.valueOf(2));
-		vo.setName("eewqq");
-		vo.setNick("구구구");
-		vo.setPass("1111");
-		vo.setGender(BigDecimal.valueOf(1));
-		vo.setAge(BigDecimal.valueOf(1));
-		vo.setEmail("222213222@2332.com");
-		vo.setRole(BigDecimal.valueOf(1));
+		vo.setProductId(BigDecimal.valueOf(3));
+		vo.setUserId(BigDecimal.valueOf(3));
 		
-		service.insertUser(vo);
+		service.productLikeInsert(vo);
 	}
 	
-	//@Test 
-	public void testDelete() {
-		service.deleteUser(2L);
-		
-	}
-	
+	// 찜 삭제
 	//@Test
-	public void testUserDetail() {
-		service.userDetail(1L);
-		
+	public void testProductLikeDelete() {
+		service.productLikeDelete(1L);
 	}
 
 }

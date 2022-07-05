@@ -37,11 +37,9 @@ public class AddressServiceImpl implements AddressService {
 	}
 	
 	@Override
-	public Address addressDetail(Long id) {
-		Address addressDetail = mapper.selectByPrimaryKey(BigDecimal.valueOf(id));
+	public Address addressDetail(Long userId) {
+		Address addressDetail = mapper.selectByPrimaryKey(BigDecimal.valueOf(userId));
 		return addressDetail;
 	}
-
-
 
 }

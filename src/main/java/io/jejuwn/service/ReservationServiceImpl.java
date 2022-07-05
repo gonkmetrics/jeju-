@@ -42,7 +42,7 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	// 유저의 예약 보기
 	@Override
-	public List<Reservation> ReservationList(Long user_id) {
+	public List<Reservation> ReservationList(Long userId) {
 		return mapper.selectByExample(null);
 	}
 

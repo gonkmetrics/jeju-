@@ -17,7 +17,7 @@ public class ProductLikeServiceImpl implements ProductLikeService {
 	
 	// 내 찜 불러오는 메서드 
 	@Override
-	public List<ProductLike> getProductLikeList(Long user_id){
+	public List<ProductLike> getProductLikeList(Long userId){
 		return mapper.selectByExample(null);
 	}
 	

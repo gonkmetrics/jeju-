@@ -16,7 +16,7 @@ public class ProductCommentServiceImpl implements ProductCommentService {
 	private ProductCommentMapper mapper;
 	
 	@Override
-	public List<ProductComment> getProductCommentList(Long product_id){
+	public List<ProductComment> getProductCommentList(Long productId){
 		return mapper.selectByExample(null);
 	}
 	

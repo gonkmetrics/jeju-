@@ -8,7 +8,7 @@ public interface ProductLikeService {
 		
 	
 	// 내 찜 불러오는 메서드 
-	public List<ProductLike> getProductLikeList(Long user_id);
+	public List<ProductLike> getProductLikeList(Long userId);
 	
 	// 찜 생성
 	public void productLikeInsert(ProductLike vo);

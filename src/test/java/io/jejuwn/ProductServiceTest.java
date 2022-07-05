@@ -31,24 +31,42 @@ public class ProductServiceTest {
 	}
 	
 	// 상품 생성
-	@Test
-	public void testproductInsert() {
+	//@Test
+	public void testProductInsert() {
 		Product vo = new Product();
 		
 		vo.setId(BigDecimal.valueOf(2));
 		vo.setName("마스크");
-		vo.set
+		vo.setCategory(BigDecimal.valueOf(2));
+		vo.setUserId(BigDecimal.valueOf(2));
+		vo.setRegion(BigDecimal.valueOf(2));
+		
+		service.productInsert(vo);
 	}
 	
 	// 상품 삭제
-	//public void productDelete(Long id);
+	//@Test
+	public void testProductDelete() {
+		service.productDelete(2L);
+	}
 	
 	// 상품 정보 수정
-	//public void productUpdate(Product vo);
+	//@Test
+	public void testProductUpdate() {
+		Product vo = new Product();
+		
+		vo.setName("업데이트가능?");
+		vo.setId(BigDecimal.valueOf(1));
+		vo.setCategory(BigDecimal.valueOf(2));
+		vo.setRegion(BigDecimal.valueOf(2));
+		vo.setUserId(BigDecimal.valueOf(1));
+		
+		service.productUpdate(vo);
+	}
 	
 	// 상품 한개의 정보 보기
-	//@Test
-	public void productDetail(Long id) {
+	@Test
+	public void testProductDetail() {
 		service.productDetail(1L);
 	}
 }

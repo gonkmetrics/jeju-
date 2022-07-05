@@ -74,7 +74,7 @@ public class CartItemController {
 		return entity;
 	}
 	// 장바구니 보는 메서드
-	@GetMapping(value="/detail/{id}",
+	/* @GetMapping(value="/detail/{id}",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<CartItem> detail (
@@ -89,6 +89,6 @@ public class CartItemController {
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
-	}
+	} */
 
 }

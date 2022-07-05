@@ -19,8 +19,8 @@ public interface AddressService {
 	// 유저 주소 수정
 	public void addressUpdate(Address vo);
 	
-	// 유저 정보 상세 보기
-	public Address addressDetail(Long id);
+	// 유저 주소 상세 보기
+	public Address addressDetail(Long userId);
 	
 	
 }

@@ -19,10 +19,10 @@ public class CartItemServiceImpl implements CartItemService {
 	public List<CartItem> getAllCartItemList(){
 		return mapper.selectByExample(null);
 	}
-	@Override
-	public CartItem getCartItemList(Long id){
-		return mapper.selectByPrimaryKey(BigDecimal.valueOf(id));
-	}
+	/*@Override
+	public CartItem getCartItemList(Long cartId){
+		return mapper.selectByPrimaryKey(BigDecimal.valueOf(cartId));
+	} */
 	
 	@Override
 	public void carItemInsert(CartItem vo) {

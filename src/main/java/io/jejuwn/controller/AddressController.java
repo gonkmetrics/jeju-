@@ -98,16 +98,16 @@ public class AddressController {
 		return entity;
 	}
 	// 특정 address만 보는 메서드
-	@GetMapping(value="/detail/{id}",
+	@GetMapping(value="/detail/{userId}",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<Address> detail (
-			@PathVariable("id") Long id) {
+			@PathVariable("userId") Long userId) {
 			
 		ResponseEntity<Address> entity = null;
 		
 		try {
-			entity = new ResponseEntity<>(service.addressDetail(id), HttpStatus.OK);
+			entity = new ResponseEntity<>(service.addressDetail(userId), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

@@ -74,22 +74,23 @@ public class CartController {
 		}
 		return entity;
 	}
-	// 한 유저의 카트만 보는 메서드
-	@GetMapping(value="/detail/{id}",
-				produces= {MediaType.APPLICATION_XML_VALUE,
-							MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<Cart> detail (
-			@PathVariable("id") Long id) {
-			
-		ResponseEntity<Cart> entity = null;
+	// 한 유저의 장바구니 불러오는 메서드
+	@GetMapping(value="/all/{userId}",
+			produces= {MediaType.APPLICATION_XML_VALUE,
+						MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<List<Cart>> list (
+			@PathVariable("userId") Long userId) {
 		
-		try {
-			entity = new ResponseEntity<>(service.getCartList(id), HttpStatus.OK);
-		} catch(Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
-		return entity;
-	}
+			ResponseEntity<List<Cart>> entity = null;
+			
+			try {
+				entity = new ResponseEntity<>(
+						service.getCartList(userId), HttpStatus.OK);			
+			} catch(Exception e) {
+				e.printStackTrace();
+				entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
+			return entity;
+			}
 
 }
