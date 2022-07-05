@@ -2,6 +2,9 @@ package io.jejuwn.model;
 
 import java.math.BigDecimal;
 
+import lombok.ToString;
+
+@ToString
 public class Promotion {
     /**
      *
@@ -135,10 +138,6 @@ public class Promotion {
         this.productId = productId;
     }
 
-	@Override
-	public String toString() {
-		return "Promotion [id=" + id + ", code=" + code + ", promotionValueDec=" + promotionValueDec
-				+ ", promotionValueAbs=" + promotionValueAbs + ", productId=" + productId + "]";
-	}
+
     
 }
