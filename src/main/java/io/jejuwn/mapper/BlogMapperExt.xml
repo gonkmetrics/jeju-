@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.jejuwn.mapper.BlogMapperExt">
-    <insert id="createNewTableIfNotExists" parameterType="String" > 
-        CREATE TABLE IF NOT EXISTS blog_user_#{userId} 
-        (
-        id number(38,0),
-	    user_id number(38,0)  DEFAULT (#{userId}),
-	    title varchar2(100) not null,
-	    content varchar2(280) not null,
-	    regdate date default sysdate,
-	    updatedate date default sysdate,
-	    PRIMARY KEY(id)
-        ) 
-=======
     <insert id="createBlogTable" parameterType="java.math.BigDecimal" statementType="CALLABLE"> 
 		DECLARE
 		    query varchar2(500);
@@ -38,6 +26,5 @@
 		EXECUTE IMMEDIATE query;
 		END IF;
 		END;
->>>>>>> origin/merge_prep
     </insert>
 </mapper>
