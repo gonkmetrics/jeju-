@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,8 +30,13 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/address")
 public class AddressController {
 	
-	@Autowired
 	private AddressService service;
+	
+	@Autowired
+	@Qualifier("AddressService")
+	private void setAddressService(AddressService service) {
+		this.service = service;
+	};
 	
 	// insert
 	@PostMapping(value="", consumes="application/json",

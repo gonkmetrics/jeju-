@@ -32,6 +32,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @Log4j2
 public class AddressControllerTest {
 	
+	@Test
+	void contextLoads() {
+	}
+	
 	@Autowired
 	private MockMvc mvc;
 	
