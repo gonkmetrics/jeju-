@@ -39,7 +39,7 @@ public class AddressControllerTest {
 	@Autowired
 	private MockMvc mvc;
 	
-	//@Test
+	@Test
 	void testGetList() throws Exception{
 		getList();
 	}

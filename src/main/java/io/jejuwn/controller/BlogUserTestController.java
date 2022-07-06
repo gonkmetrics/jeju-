@@ -29,7 +29,7 @@ public class BlogUserTestController {
 	private BlogUserTestService service;
 	
 	// create table
-	@PostMapping(value="/{id}", consumes="application/json",
+	@GetMapping(value="/create/{id}",
 			produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> create(
 			@PathVariable("id") Long id){
