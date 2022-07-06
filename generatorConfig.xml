@@ -1,0 +1,15 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+ "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="simple" targetRuntime="MyBatis3">
+    <jdbcConnection connectionURL="jdbc:log4jdbc:oracle:thin:@localhost:1522/XEPDB1" driverClass="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" password="jejutest" userId="jejutest" />
+    <javaModelGenerator targetPackage="io.jejuwn.model" targetProject="jejuwn_base" />
+
+    <sqlMapGenerator targetPackage="io.jejuwn.mapper" targetProject="jejuwn_base"/>
+
+    <javaClientGenerator type="XMLMAPPER" targetPackage="io.jejuwn.mapper" targetProject="jejuwn_base"/>
+
+    <table tableName="promotion" />
+  </context>
+</generatorConfiguration>
