@@ -28,7 +28,6 @@ import lombok.extern.log4j.Log4j2;
 public class AddressController {
 	
 	@Autowired
-	@Qualifier("ads1")
 	private AddressService service;
 	
 	// insert

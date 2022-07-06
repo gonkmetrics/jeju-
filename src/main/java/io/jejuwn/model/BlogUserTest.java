@@ -3,6 +3,9 @@ package io.jejuwn.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import lombok.ToString;
+
+@ToString
 public class BlogUserTest {
     /**
      *

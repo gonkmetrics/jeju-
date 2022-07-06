@@ -21,5 +21,8 @@ public interface BlogUserTestService {
 	
 	/* 블로그 유저 상세 보기
 	public BlogUserTest blogUserDetail(Long id); */
+	
+	//blog create table
+	public void blogCreate(Long id);
 
 }

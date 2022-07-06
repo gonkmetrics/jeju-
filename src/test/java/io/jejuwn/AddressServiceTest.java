@@ -27,7 +27,7 @@ class AddressServiceTest {
 	private AddressService service;
 	
 	// 유저들의 주소 정보를 불러오는 메서드
-	// @Test
+	@Test
 	public void testgetAddressList() {
 		log.info(service.getAddressList());
 	}

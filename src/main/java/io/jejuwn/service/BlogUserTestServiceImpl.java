@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.jejuwn.mapper.BlogMapperExt;
 import io.jejuwn.mapper.BlogUserTestMapper;
 import io.jejuwn.model.BlogUserTest;
 
@@ -14,6 +15,9 @@ public class BlogUserTestServiceImpl implements BlogUserTestService {
 	
 	@Autowired
 	private BlogUserTestMapper mapper;
+	
+	@Autowired
+	private BlogMapperExt mapperCreate;
 	
 	// 블로그 유저 리스트
 	public List<BlogUserTest> getAllBlogUserList(){
@@ -33,6 +37,13 @@ public class BlogUserTestServiceImpl implements BlogUserTestService {
 	// 블로그 유저 수정
 	public void blogUserUpdate(BlogUserTest vo) {
 		mapper.updateByPrimaryKey(vo);
+	}
+
+	@Override
+	public void blogCreate(Long id) {
+		// TODO Auto-generated method stub
+		mapperCreate.createBlogTable(BigDecimal.valueOf(id));
+		
 	}
 	
 	/* 블로그 유저 상세 보기

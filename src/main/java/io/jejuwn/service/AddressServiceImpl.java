@@ -12,7 +12,6 @@ import io.jejuwn.mapper.AddressMapper;
 import io.jejuwn.model.Address;
 
 @Service
-@Primary
 public class AddressServiceImpl implements AddressService {
 	
 	

@@ -28,6 +28,22 @@ public class BlogUserTestController {
 	@Autowired
 	private BlogUserTestService service;
 	
+	// create table
+	@PostMapping(value="/{id}", consumes="application/json",
+			produces= {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> create(
+			@PathVariable("id") Long id){
+	
+	ResponseEntity<String> entity = null;
+	try {
+	service.blogCreate(id);
+	entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+	} catch(Exception e) {
+	entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+	return entity;
+	}
+	
 	// insert
 	@PostMapping(value="", consumes="application/json",
 							produces= {MediaType.TEXT_PLAIN_VALUE})
@@ -64,7 +80,7 @@ public class BlogUserTestController {
 		}
 		return entity;
 	}
-	// delete
+	// delete NOTE: this deletes blogposts, not the blog table
 	@DeleteMapping(value="/{id}",
 							produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String>  delete(

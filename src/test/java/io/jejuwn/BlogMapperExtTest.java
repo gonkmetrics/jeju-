@@ -40,14 +40,20 @@ public class BlogMapperExtTest {
 	@Test
 	void insertTable() {
 	BlogUserTest obj = new BlogUserTest();
-	obj.setContent("abc");
-	obj.setId(BigDecimal.valueOf(1));
-	obj.setTitle("abc");
+	obj.setContent("def");
+	//obj.setId(BigDecimal.valueOf(1));
+	obj.setTitle("def");
 	obj.setUserId(BigDecimal.valueOf(1));
-	obj.setRegdate(null);
-	obj.setUpdatedate(null);
+	//obj.setRegdate(null);
+	//obj.setUpdatedate(null);
 	log.info(obj.getContent());
 	mapper2.insert(obj);
 }
+	@Test
+	void selectTable() {
+		//BlogUserTest obj = new BlogUserTest();
+		log.warn(mapper2.selectByPrimaryKey(BigDecimal.valueOf(1)));
+	}
+	
 
 }
