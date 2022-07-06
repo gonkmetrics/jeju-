@@ -149,8 +149,8 @@
     insert into BLOG_USER_${userId} (ID, USER_ID, TITLE, 
       CONTENT, REGDATE, UPDATEDATE
       )
-    values (#{id,jdbcType=NUMERIC}, #{userId,jdbcType=NUMERIC}, #{title,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{regdate,jdbcType=TIMESTAMP}, #{updatedate,jdbcType=TIMESTAMP}
+    values (blog_seq.nextval, #{userId,jdbcType=NUMERIC}, #{title,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, sysdate, sysdate
       )
   </insert>
   <insert id="insertSelective" parameterType="io.jejuwn.model.BlogUserTest">

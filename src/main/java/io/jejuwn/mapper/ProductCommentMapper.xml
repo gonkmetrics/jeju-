@@ -150,9 +150,8 @@
     insert into PRODUCT_COMMENT (ID, CONTENT, USER_ID, 
       PRODUCT_ID, REGDATE, UPDATEDATE, 
       RATING)
-    values (#{id,jdbcType=NUMERIC}, #{content,jdbcType=VARCHAR}, #{userId,jdbcType=NUMERIC}, 
-      #{productId,jdbcType=NUMERIC}, #{regdate,jdbcType=TIMESTAMP}, #{updatedate,jdbcType=TIMESTAMP}, 
-      #{rating,jdbcType=NUMERIC})
+    values (product_com_seq.nextval, #{content,jdbcType=VARCHAR}, #{userId,jdbcType=NUMERIC}, 
+      #{productId,jdbcType=NUMERIC}, sysdate, sysdate, #{rating,jdbcType=NUMERIC})
   </insert>
   <insert id="insertSelective" parameterType="io.jejuwn.model.ProductComment">
     <!--

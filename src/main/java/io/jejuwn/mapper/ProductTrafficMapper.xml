@@ -147,7 +147,7 @@
     -->
     insert into PRODUCT_TRAFFIC (ID, LATITUDE, LONGITUDE, 
       PRODUCT_ID, KEYWORD)
-    values (#{id,jdbcType=NUMERIC}, #{latitude,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
+    values (product_tra_seq.nextval, #{latitude,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
       #{productId,jdbcType=NUMERIC}, #{keyword,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="io.jejuwn.model.ProductTraffic">

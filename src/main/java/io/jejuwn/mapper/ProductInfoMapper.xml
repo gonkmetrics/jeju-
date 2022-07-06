@@ -158,8 +158,8 @@
       START_TIME, END_TIME, PRICE, 
       HIT, MAX_CAPACITY, ADDRESS
       )
-    values (#{id,jdbcType=NUMERIC}, #{productId,jdbcType=NUMERIC}, #{content,jdbcType=VARCHAR}, 
-      #{contentExtra,jdbcType=VARCHAR}, #{regdate,jdbcType=TIMESTAMP}, #{updatedate,jdbcType=TIMESTAMP}, 
+    values (product_inf_seq.nextval, #{productId,jdbcType=NUMERIC}, #{content,jdbcType=VARCHAR}, 
+      #{contentExtra,jdbcType=VARCHAR}, sysdate, sysdate, 
       #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{price,jdbcType=NUMERIC}, 
       #{hit,jdbcType=NUMERIC}, #{maxCapacity,jdbcType=NUMERIC}, #{address,jdbcType=VARCHAR}
       )

@@ -151,7 +151,7 @@
     insert into USERTBL (ID, NAME, NICK, 
       PASS, GENDER, AGE, 
       EMAIL, ROLE)
-    values (#{id,jdbcType=NUMERIC}, #{name,jdbcType=VARCHAR}, #{nick,jdbcType=VARCHAR}, 
+    values (usertbl_seq.nextval, #{name,jdbcType=VARCHAR}, #{nick,jdbcType=VARCHAR}, 
       #{pass,jdbcType=VARCHAR}, #{gender,jdbcType=NUMERIC}, #{age,jdbcType=NUMERIC}, 
       #{email,jdbcType=VARCHAR}, #{role,jdbcType=NUMERIC})
   </insert>
