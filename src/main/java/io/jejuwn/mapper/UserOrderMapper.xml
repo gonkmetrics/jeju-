@@ -150,7 +150,7 @@
     insert into USER_ORDER (ID, TOKEN, USER_ID, 
       CART_ID, ADDRESS_ID, STATUS, 
       PROMOTION_ID)
-    values (#{id,jdbcType=NUMERIC}, #{token,jdbcType=NUMERIC}, #{userId,jdbcType=NUMERIC}, 
+    values (user_ord_seq.nextval, #{token,jdbcType=NUMERIC}, #{userId,jdbcType=NUMERIC}, 
       #{cartId,jdbcType=NUMERIC}, #{addressId,jdbcType=NUMERIC}, #{status,jdbcType=NUMERIC}, 
       #{promotionId,jdbcType=NUMERIC})
   </insert>

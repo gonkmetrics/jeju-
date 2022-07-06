@@ -147,7 +147,7 @@
     -->
     insert into CART_ITEM (ID, ITEM, CART_ID, 
       PRODUCT_ID, CATEGORY)
-    values (#{id,jdbcType=NUMERIC}, #{item,jdbcType=NUMERIC}, #{cartId,jdbcType=NUMERIC}, 
+    values (cart_item_seq.nextval, #{item,jdbcType=NUMERIC}, #{cartId,jdbcType=NUMERIC}, 
       #{productId,jdbcType=NUMERIC}, #{category,jdbcType=NUMERIC})
   </insert>
   <insert id="insertSelective" parameterType="io.jejuwn.model.CartItem">

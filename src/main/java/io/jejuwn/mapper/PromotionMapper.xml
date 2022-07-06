@@ -146,7 +146,7 @@
     -->
     insert into PROMOTION (ID, CODE, PROMOTION_VALUE, 
       PRODUCT_ID)
-    values (#{id,jdbcType=NUMERIC}, #{code,jdbcType=VARCHAR}, #{promotionValue,jdbcType=NUMERIC}, 
+    values (promotion_seq.nextval, #{code,jdbcType=VARCHAR}, #{promotionValue,jdbcType=NUMERIC}, 
       #{productId,jdbcType=NUMERIC})
   </insert>
   <insert id="insertSelective" parameterType="io.jejuwn.model.Promotion">

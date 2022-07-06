@@ -150,7 +150,7 @@
     insert into ADDRESS (ID, USER_ID, ADDRESS_LINE1, 
       ADDRESS_LINE2, CITY, POSTAL_CODE, 
       PHONE)
-    values (#{id,jdbcType=NUMERIC}, #{userId,jdbcType=NUMERIC}, #{addressLine1,jdbcType=VARCHAR}, 
+    values (address_seq.nextval, #{userId,jdbcType=NUMERIC}, #{addressLine1,jdbcType=VARCHAR}, 
       #{addressLine2,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{postalCode,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR})
   </insert>

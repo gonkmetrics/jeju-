@@ -151,7 +151,7 @@
     insert into RESERVATION (ID, NAME, REGDATE, 
       USER_ID, RESERVATION, RESERVATION_DATE, 
       STATUS, PRODUCT_ID)
-    values (#{id,jdbcType=NUMERIC}, #{name,jdbcType=VARCHAR}, #{regdate,jdbcType=TIMESTAMP}, 
+    values (reservation_seq.nextval, #{name,jdbcType=VARCHAR}, sysdate, 
       #{userId,jdbcType=NUMERIC}, #{reservation,jdbcType=NUMERIC}, #{reservationDate,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=NUMERIC}, #{productId,jdbcType=NUMERIC})
   </insert>

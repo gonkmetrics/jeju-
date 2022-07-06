@@ -25,7 +25,7 @@ public class UserOrderServiceTest {
 	private UserOrderService service;
 	
 	// 유저의 주문내역 전체를 불러오는 메서드
-	// @Test
+	@Test
 	 public void testGetAllUserOrderList(){
 		 log.info(service.getAllUserOrderList());
 	}

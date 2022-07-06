@@ -147,7 +147,7 @@
     -->
     insert into PRODUCT (ID, NAME, CATEGORY, 
       USER_ID, REGION)
-    values (#{id,jdbcType=NUMERIC}, #{name,jdbcType=VARCHAR}, #{category,jdbcType=NUMERIC}, 
+    values (product_seq.nextval, #{name,jdbcType=VARCHAR}, #{category,jdbcType=NUMERIC}, 
       #{userId,jdbcType=NUMERIC}, #{region,jdbcType=NUMERIC})
   </insert>
   <insert id="insertSelective" parameterType="io.jejuwn.model.Product">

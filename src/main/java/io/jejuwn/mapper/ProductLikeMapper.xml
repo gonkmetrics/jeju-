@@ -145,7 +145,7 @@
     -->
     insert into PRODUCT_LIKE (ID, USER_ID, PRODUCT_ID
       )
-    values (#{id,jdbcType=NUMERIC}, #{userId,jdbcType=NUMERIC}, #{productId,jdbcType=NUMERIC}
+    values (product_lik_seq.nextval, #{userId,jdbcType=NUMERIC}, #{productId,jdbcType=NUMERIC}
       )
   </insert>
   <insert id="insertSelective" parameterType="io.jejuwn.model.ProductLike">
