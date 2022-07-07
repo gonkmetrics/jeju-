@@ -26,13 +26,13 @@ public class ProductTrafficServiceTest {
 	
 	// product 교통 전체 리스트
 	//@Test
-	public void getProductTrafficList() {
+	public void testGetProductTrafficList() {
 		log.info(service.getProductTrafficList());
 	}
 	
 	// 교통 정보 생성
 	// @Test
-	public void productTrafficInsert() {
+	public void testProductTrafficInsert() {
 		ProductTraffic vo = new ProductTraffic();
 		
 		vo.setId(BigDecimal.valueOf(2));
@@ -47,13 +47,13 @@ public class ProductTrafficServiceTest {
 	
 	// 교통 정보 삭제
 	// @Test
-	public void productTrafficDelete() {
+	public void testProductTrafficDelete() {
 		service.productTrafficDelete(1L);
 	}
 	
 	// 교통 정보 수정
 	// @Test
-	public void productTrafficUpdate() {
+	public void testProductTrafficUpdate() {
 		ProductTraffic vo = new ProductTraffic();
 		
 		vo.setId(BigDecimal.valueOf(1));
@@ -67,7 +67,7 @@ public class ProductTrafficServiceTest {
 	
 	// 교통 정보 자세히 보기
 	// @Test
-	public void productTrafficDetail() {
+	public void testProductTrafficDetail() {
 		log.info(service.productTrafficDetail(2L));
 	}
 

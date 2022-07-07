@@ -26,14 +26,14 @@ public class CartItemServiceTest {
 	
 	// 모든 장바구니 보기
 	//@Test
-	public void getAllCartItemList(){
+	public void testGetAllCartItemList(){
 		log.info(service.getAllCartItemList());
 	}
 	// 내 장바구니 목록보기	
 	// public CartItem getCartItemList(Long cartId);
 	// 장바구니 추가
 	// @Test
-	public void carItemInsert() {
+	public void testCarItemInsert() {
 		CartItem vo = new CartItem();
 		
 		vo.setId(BigDecimal.valueOf(2));
@@ -46,7 +46,7 @@ public class CartItemServiceTest {
 	}
 	// 장바구니 삭제
 	@Test
-	public void cartItemDelete() {
+	public void testCartItemDelete() {
 		service.cartItemDelete(2L);
 	}
 

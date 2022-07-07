@@ -26,17 +26,17 @@ public class CartServiceTest {
 	
 	// 카트 리스트 전부를 불러오는 메서드
 	//@Test
-	public void getAllCartList(){
+	public void testGetAllCartList(){
 		log.info(service.getAllCartList());
 	}
 	// 내 카트 리스트 불러오는 메서드
 	// @Test
-	public void getCartList() {
+	public void testGetCartList() {
 		log.info(service.getCartList(3L));
 	}
 	// insert
 	// @Test
-	public void cartInsert() {
+	public void testCartInsert() {
 		Cart vo = new Cart();
 		
 		vo.setId(BigDecimal.valueOf(4));
@@ -47,7 +47,7 @@ public class CartServiceTest {
 	}
 	// delete
 	//@Test
-	public void cartDelete() {
+	public void testCartDelete() {
 		service.cartDelete(4L);
 	}
 

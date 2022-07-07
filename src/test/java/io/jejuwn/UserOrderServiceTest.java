@@ -25,14 +25,14 @@ public class UserOrderServiceTest {
 	private UserOrderService service;
 	
 	// 유저의 주문내역 전체를 불러오는 메서드
-	@Test
+	//@Test
 	 public void testGetAllUserOrderList(){
 		 log.info(service.getAllUserOrderList());
 	}
 	
 	// 유저 주문내역 생성
 	// @Test
-	public void userOrderInsert() {
+	public void testuserOrderInsert() {
 		UserOrder vo = new UserOrder();
 		
 		vo.setId(BigDecimal.valueOf(3));
