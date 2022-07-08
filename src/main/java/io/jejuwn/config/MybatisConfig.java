@@ -24,10 +24,10 @@ public class MybatisConfig {
 	@Bean
 	public DataSource dataSource() {
 		return DataSourceBuilder.create()
-				.url("jdbc:oracle:thin:@//localhost:1522/XEPDB1")
+				.url("jdbc:oracle:thin:@//localhost:1521/XEPDB1")
 				.driverClassName("oracle.jdbc.OracleDriver")
-				.username("jejutest")
-				.password("jejutest")
+				.username("mytest")
+				.password("mytest")
 				.build();
 	}
 	
