@@ -37,7 +37,7 @@ public class UsertblMapperTest {
 	    log.info(mapper);
 	  }
 	
-	//@Test
+	@Test
 	public void testSelect() {
 		log.info(mapper.selectByPrimaryKey(BigDecimal.valueOf(1)));
 	}

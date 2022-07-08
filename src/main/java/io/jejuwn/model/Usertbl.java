@@ -1,7 +1,36 @@
 package io.jejuwn.model;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Builder
+@ToString
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
+@Table(name="Usertbl")
 public class Usertbl {
     /**
      *
@@ -10,6 +39,10 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERTBL_SEQ")
+	@SequenceGenerator(sequenceName = "customer_seq", allocationSize = 1, name = "USERTBL_SEQ")
+	@Id
+	@Column(name = "id")
     private BigDecimal id;
 
     /**
@@ -19,6 +52,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private String name;
 
     /**
@@ -28,6 +62,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+    @Column(name = "nick")
     private String nick;
 
     /**
@@ -37,6 +72,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column(name = "pass")
     private String pass;
 
     /**
@@ -46,6 +82,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private BigDecimal gender;
 
     /**
@@ -55,6 +92,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private BigDecimal age;
 
     /**
@@ -64,6 +102,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private String email;
 
     /**
@@ -73,6 +112,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private BigDecimal role;
 
     /**
@@ -267,10 +307,6 @@ public class Usertbl {
         this.role = role;
     }
 
-	@Override
-	public String toString() {
-		return "Usertbl [id=" + id + ", name=" + name + ", nick=" + nick + ", pass=" + pass + ", gender=" + gender
-				+ ", age=" + age + ", email=" + email + ", role=" + role + "]";
-	}
+
     
 }

@@ -1,6 +1,7 @@
 package io.jejuwn.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -18,4 +19,6 @@ public interface UsertblService {
 	public Usertbl userDetail(Long id);
 	// 유저 회원정보수정
 	public void updateUser(Usertbl vo);
+	
+	public Optional<Usertbl> findByIdPw(Long id);
 }

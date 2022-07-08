@@ -28,14 +28,14 @@ public class UserServiceTest {
 		log.info(service.listUser());
 	}
 	
-	//@Test
+	@Test
 	public void testInsert() {
 		Usertbl vo = new Usertbl();
 		
-		vo.setId(BigDecimal.valueOf(2));
+		//vo.setId(BigDecimal.valueOf(2));
 		vo.setName("eewqq");
-		vo.setNick("구구구");
-		vo.setPass("1111");
+		vo.setNick("waggy");
+		vo.setPass("abc");
 		vo.setGender(BigDecimal.valueOf(1));
 		vo.setAge(BigDecimal.valueOf(1));
 		vo.setEmail("222213222@2332.com");
