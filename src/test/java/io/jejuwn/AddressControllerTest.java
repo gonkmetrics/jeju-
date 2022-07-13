@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -32,6 +33,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @Log4j2
 public class AddressControllerTest {
 	
+	@MockBean
+	private AddressService addressService;
+	
 	//@Test
 	void contextLoads() {
 	}
@@ -43,7 +47,7 @@ public class AddressControllerTest {
 	void testGetList() throws Exception{
 		getList();
 	}
-	
+	//@Test
 	void getList() throws Exception{
 		MvcResult result = mvc.perform(MockMvcRequestBuilders
 				.get("/address/list")
