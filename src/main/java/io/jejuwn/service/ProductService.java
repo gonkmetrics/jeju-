@@ -2,9 +2,13 @@ package io.jejuwn.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
 import io.jejuwn.model.Product;
 
-
+@Service
 public interface ProductService {
 		
 	
@@ -22,5 +26,7 @@ public interface ProductService {
 	
 	// 상품 한개의 정보 보기
 	public Product productDetail(Long id);
+	
+	public Page<Product> productList(Pageable pageable);
 	
 }

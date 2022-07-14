@@ -4,9 +4,13 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.jejuwn.model.Product;
+import io.jejuwn.repository.ProductRepository;
 import io.jejuwn.service.ProductService;
 import lombok.extern.log4j.Log4j2;
 
@@ -27,6 +32,9 @@ public class ProductController {
 
 	@Autowired
 	private ProductService service;
+	
+	@Autowired
+	private ProductRepository repository;
 	
 	// insert
 	@PostMapping(value="", consumes="application/json",
@@ -81,7 +89,7 @@ public class ProductController {
 				return entity;
 			}
 	// 상품 전체를 가져오는 메서드
-	@GetMapping(value="/list",
+	/* @GetMapping(value="/list",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 						MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<Product>> list() {
@@ -94,7 +102,21 @@ public class ProductController {
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
+	} */
+	@GetMapping(value="/list",
+			produces= {MediaType.APPLICATION_XML_VALUE,
+					MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public String productList(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+	ResponseEntity<String> entity = null;
+	
+	try {
+		service.productList(pageable);
+		entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+	} catch(Exception e) {
+		entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
+	return entity;
+}
 	// 특정 상품만 보는 메서드
 	@GetMapping(value="/detail/{id}",
 				produces= {MediaType.APPLICATION_XML_VALUE,
