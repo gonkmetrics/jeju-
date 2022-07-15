@@ -101,7 +101,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         .and()
         .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
         .authorizeRequests()
-        .antMatchers("/login/**","/login", "/user/save", "/token/refresh/**").permitAll()
+        .antMatchers("/login/**","/login","/logout", "/logout/**", "/user/save", "/token/refresh/**").permitAll()
         .antMatchers(HttpMethod.GET, "/user/**").hasAnyAuthority("ROLE_USER")
         .antMatchers(HttpMethod.POST, "/user/save/**").hasAnyAuthority("ROLE_ADMIN")
         .anyRequest().fullyAuthenticated()

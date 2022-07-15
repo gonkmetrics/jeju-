@@ -70,7 +70,7 @@ public class AuthController {
         URI uri = URI.create(
                 ServletUriComponentsBuilder
                         .fromCurrentContextPath()
-                        .path("/auth/user/save").toUriString());
+                        .path("/user/save").toUriString());
 
         Usertbl user = signUpForm.toEntity();
         log.info(user);
@@ -86,7 +86,7 @@ public class AuthController {
         URI uri = URI.create(
                 ServletUriComponentsBuilder
                         .fromCurrentContextPath()
-                        .path("/auth/role/save").toUriString());
+                        .path("/role/save").toUriString());
 
         return ResponseEntity.created(uri).body(userService.saveRole(role));
     }
@@ -97,10 +97,11 @@ public class AuthController {
         return ResponseEntity.ok().build();
     }
     
-    @PostMapping("/logout")
-    public ResponseEntity<String> logoutHandler(@RequestHeader("AUTHORIZATION") String authorizationHeader) {
+    @GetMapping("/logout")
+    public ResponseEntity<String> logoutHandler(@RequestHeader("Authorization") String authorizationHeader) {
     	try {
     		String subject = jwtTokens.getTokenPrincipal(authorizationHeader);
+    		log.info(subject);
         	redisTemplate.delete(subject);
         	return ResponseEntity.ok("Logged out");
     	}catch (Exception e){
@@ -205,7 +206,7 @@ class SignUpForm {
     private String pass;
     private BigDecimal gender;
     private String email;
-    private BigDecimal role;
+    //private BigDecimal role;
     private String roleName;
 
     public Usertbl toEntity() {
