@@ -2,9 +2,21 @@ package io.jejuwn.security.jwt;
 
 
 
+import java.security.Key;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import javax.crypto.spec.SecretKeySpec;
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.bind.DatatypeConverter;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 import com.auth0.jwt.JWT;
@@ -14,10 +26,8 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jejuwn.model.Role;
+import io.jejuwn.model.Usertbl;
 import lombok.Value;
 import lombok.extern.log4j.Log4j2;
 
@@ -27,24 +37,45 @@ public class JwtTokenProvider {
 	
 	//Token configuration
 	// @Value("${jwt_secret}")
-	private static final String JWT_SECRET = "secretKeyDonutSteal";
+	//private static final String JWT_SECRET = "secretKeyDonutSteal";
+	private static final String JWT_REFRESH = "refreshKey";
+	private static final String DATA_KEY = "userId";
 	private static final int JWT_EXPIRATION_MS = 604800000;
+	Algorithm algorithm = Algorithm.HMAC256("secretKey".getBytes());
 	
-	public String generateToken(String nick) throws IllegalArgumentException, JWTCreationException {
+	public String generateToken(User user) throws IllegalArgumentException, JWTCreationException {
         return JWT.create()
-                .withSubject("User Info")
-                .withClaim("nick", nick)
-                //.withClaim("role", role)
-                .withIssuedAt(new Date())
-                .withIssuer("jejuwn_auth")
-                //.withExpiresAt(exp)
-                .sign(Algorithm.HMAC256(JWT_SECRET));
+                .withSubject(user.getUsername())
+                .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000))
+                //.withIssuer(request.getRequestURI().toString())
+                .withIssuer("jejuwn")
+                .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
+                .sign(algorithm);
+
     }
+	
+	public String generateRefreshToken(User user) throws IllegalArgumentException, JWTCreationException {
+        return JWT.create()
+                .withSubject(user.getUsername())
+                .withExpiresAt(new Date(System.currentTimeMillis() + 300 * 60 * 1000))
+                //.withIssuer(request.getRequestURI().toString())
+                .withIssuer("jejuwn")
+                .sign(algorithm);
+    }
+	
+	public Date getRefreshTokenExpiry(String token) throws JWTVerificationException {
+		JWTVerifier verifier = JWT.require(algorithm)
+				.build();
+		DecodedJWT jwt = verifier.verify(token);
+		Date expiry = jwt.getExpiresAt();
+		return expiry;
+	}
+	
+
 
     public String validateTokenAndRetrieveSubject(String token)throws JWTVerificationException {
-        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(JWT_SECRET))
-                .withSubject("User Info")
-                .withIssuer("jejuwn_auth")
+        JWTVerifier verifier = JWT.require(algorithm)
+                .withIssuer("jejuwn")
                 .build();
         DecodedJWT jwt = verifier.verify(token);
         return jwt.getClaim("nick").asString();
@@ -64,32 +95,5 @@ public class JwtTokenProvider {
 	}*/
 	
 	//include method that uses authentication object
-	
-	public static String getUserIdFromJWT(String token) {
-		Claims claims = Jwts.parser()
-				.setSigningKey(JWT_SECRET)
-				.parseClaimsJws(token)
-				.getBody();
-		
-		return claims.getSubject();
-	}
-	
-	public static boolean validateToken(String token) {
-		try {
-			Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(token);
-			return true;
-		} catch (SignatureException ex) {
-            log.error("Invalid JWT signature");
-        } catch (MalformedJwtException ex) {
-            log.error("Invalid JWT token");
-        } catch (ExpiredJwtException ex) {
-            log.error("Expired JWT token");
-        } catch (UnsupportedJwtException ex) {
-            log.error("Unsupported JWT token");
-        } catch (IllegalArgumentException ex) {
-            log.error("JWT claims string is empty.");
-        }
-        return false;
-	}
 
 }

@@ -7,6 +7,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -23,12 +25,15 @@ public class UserServiceTest {
 	@Autowired
 	private UsertblService service;
 	
+	@Autowired
+	private UserDetailsService uService;
+	
 	//@Test
 	public void testGetList() {
 		log.info(service.listUser());
 	}
 	
-	@Test
+	//@Test
 	public void testInsert() {
 		Usertbl vo = new Usertbl();
 		
@@ -39,7 +44,6 @@ public class UserServiceTest {
 		vo.setGender(BigDecimal.valueOf(1));
 		vo.setAge(BigDecimal.valueOf(1));
 		vo.setEmail("222213222@2332.com");
-		vo.setRole(BigDecimal.valueOf(1));
 		
 		service.insertUser(vo);
 	}
@@ -54,6 +58,14 @@ public class UserServiceTest {
 	public void testUserDetail() {
 		log.info(service.userDetail(1L));
 		
+	}
+	
+	@Test
+	void loadByTest() {
+		
+		UserDetails u = uService.loadUserByUsername("test3");
+		log.info(u);
+		log.info(u.getPassword());
 	}
 
 }

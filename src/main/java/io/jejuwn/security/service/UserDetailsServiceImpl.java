@@ -15,8 +15,9 @@ import org.springframework.stereotype.Component;
 import io.jejuwn.model.Usertbl;
 import io.jejuwn.repository.UserRepository;
 
-@Component
-public class UserDetailsServiceImpl implements UserDetailsService{
+//@Component
+/*
+ * public class UserDetailsServiceImpl implements UserDetailsService{
 
 	@Autowired
 	private UserRepository userRepo;
@@ -35,3 +36,4 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	
 
 }
+*/

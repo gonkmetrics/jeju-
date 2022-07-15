@@ -27,7 +27,7 @@ public class JwtTest {
 	
 	@Test
 	public void postTestToken() {
-		var tokenString = token.generateToken("waggy");
+		//var tokenString = token.generateToken("waggy");
 		Map<String, String> bodyMap = new HashMap<String, String>();
 		bodyMap.put("password", "abc");
 		bodyMap.put("nick", "waggy");
@@ -36,14 +36,14 @@ public class JwtTest {
 		.post().uri("/auth/login")
 		.contentType(MediaType.APPLICATION_JSON)
 		.body(BodyInserters.fromValue(bodyMap))
-		.headers(http -> http.setBearerAuth(tokenString))
+		//.headers(http -> http.setBearerAuth(tokenString))
 		.exchange() //check head
 		.expectStatus().isOk();
 		
-		log.info(tokenString);
+		//log.info(tokenString);
 		
-		String validation = token.validateTokenAndRetrieveSubject(tokenString);
-		log.info(validation);
+		//String validation = token.validateTokenAndRetrieveSubject(tokenString);
+		//log.info(validation);
 	}
 	
 	/*

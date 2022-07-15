@@ -10,8 +10,9 @@ import io.jejuwn.model.Usertbl;
 
 @Repository
 public interface UserRepository extends JpaRepository<Usertbl, BigDecimal>{
-	Optional<Usertbl> findById(BigDecimal userid);
+	Optional<Usertbl> findById(BigDecimal id);
 	Optional<Usertbl> findByNick(String nick);
+	Optional<Usertbl> findByIdAndPass(BigDecimal id, String pass);
 	// Boolean existsByUsername(String username);
 	
 	//shoulda just used spring roo
