@@ -41,6 +41,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
             if(authorizationHeader != null) {
                 try{
                 	log.info("in authHead");
+                	log.info(authorizationHeader);
                     String token = authorizationHeader;
                     Algorithm algorithm = Algorithm.HMAC256("secretKey".getBytes());
 
@@ -49,13 +50,18 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                     DecodedJWT decodedJWT = verifier.verify(token);
 
                     String username = decodedJWT.getSubject();
+                    
+                    //HIGH PRIORITY FOR FIX
+                    
                     String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
                     Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
                     Arrays.stream(roles).forEach(role -> {
                         authorities.add(new SimpleGrantedAuthority(role));
                     });
+                    
+                    String pass = (String) SecurityContextHolder.getContext().getAuthentication().getCredentials();
                     UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                            new UsernamePasswordAuthenticationToken(username, null, authorities);
+                            new UsernamePasswordAuthenticationToken(username, pass, authorities);
 
                     SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
                     filterChain.doFilter(request, response);

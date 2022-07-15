@@ -19,7 +19,7 @@ public class LoginCredentials {
 	
 	//private String email;
 	private String password;
-	private String nick;
+	private String id;
 	//private BigDecimal id;
 
 }

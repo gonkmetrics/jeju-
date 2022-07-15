@@ -32,15 +32,16 @@ public class RedisTest {
 		
 	}
 	
-	@Test
+	//@Test
 	void getFromRedis() {
 		log.info(redisTemplate.opsForValue().get("testname"));
 		
 	}
 	
-	//@Test
+	@Test
 	void deleteFromRedis() {
-		redisTemplate.delete("testname");
+		redisTemplate.opsForValue()
+        .set("test2", "", 1, TimeUnit.MILLISECONDS);
 	}
 
 }

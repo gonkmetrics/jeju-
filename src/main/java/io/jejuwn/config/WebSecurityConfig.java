@@ -127,7 +127,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				"/swagger-resources/configuration/security",
 				"/swagger-ui/**",
 				
-				"/files/**"
+				"/files/**",
+				"/logout",
+				"/logout/**"
 				);
 	}
 	
@@ -136,7 +138,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
-		config.addAllowedOrigin("*");
+		config.addAllowedOriginPattern("*");
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 		source.registerCorsConfiguration("/**", config);

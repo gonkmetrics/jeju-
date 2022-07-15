@@ -97,25 +97,24 @@ public class AuthController {
         return ResponseEntity.ok().build();
     }
     
-    @GetMapping("/logout")
+    @PostMapping("/logout")
     public ResponseEntity<String> logoutHandler(@RequestHeader("Authorization") String authorizationHeader) {
     	try {
     		String subject = jwtTokens.getTokenPrincipal(authorizationHeader);
     		log.info(subject);
-        	redisTemplate.delete(subject);
+        	redisTemplate.opsForValue()
+            .set(subject, "", 1, TimeUnit.MILLISECONDS);;
         	return ResponseEntity.ok("Logged out");
     	}catch (Exception e){
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-    	}
-    	
-    	
+    	} 	
     }
     
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody @Valid LoginCredentials body) {
         try {
         	log.info(body);
-            UsernamePasswordAuthenticationToken authInputToken = new UsernamePasswordAuthenticationToken(body.getNick(), body.getPassword());
+            UsernamePasswordAuthenticationToken authInputToken = new UsernamePasswordAuthenticationToken(body.getId(), body.getPassword());
             log.info(authInputToken);
             Authentication authentication = authManager.authenticate(authInputToken);
             User user = (User) authentication.getPrincipal();
@@ -141,7 +140,7 @@ public class AuthController {
         	}
         }
     
-    @GetMapping("/token/refresh")
+    @PostMapping("/token/refresh")
     public ResponseEntity<String> refreshToken(@RequestHeader("AUTHORIZATION") String authorizationHeader) throws IOException {
 
         if(authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
