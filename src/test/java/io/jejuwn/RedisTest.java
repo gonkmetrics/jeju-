@@ -24,7 +24,7 @@ public class RedisTest {
 	
 	@Autowired private RedisTemplate<String, Object> redisTemplate;
 
-	@Test
+	//@Test
 	void savetoRedis() {
 		
 		redisTemplate.opsForValue()
