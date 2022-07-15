@@ -71,6 +71,14 @@ public class JwtTokenProvider {
 		return expiry;
 	}
 	
+	public String getTokenPrincipal(String token) throws JWTVerificationException{
+		JWTVerifier verifier = JWT.require(algorithm)
+				.build();
+		DecodedJWT jwt = verifier.verify(token);
+		String principal = jwt.getSubject();
+		return principal;
+	}
+	
 
 
     public String validateTokenAndRetrieveSubject(String token)throws JWTVerificationException {

@@ -98,9 +98,15 @@ public class AuthController {
     }
     
     @PostMapping("/logout")
-    public void logoutHandler() {
-    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    	redisTemplate.delete(authentication.getName());
+    public ResponseEntity<String> logoutHandler(@RequestHeader("AUTHORIZATION") String authorizationHeader) {
+    	try {
+    		String subject = jwtTokens.getTokenPrincipal(authorizationHeader);
+        	redisTemplate.delete(subject);
+        	return ResponseEntity.ok("Logged out");
+    	}catch (Exception e){
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    	}
+    	
     	
     }
     
