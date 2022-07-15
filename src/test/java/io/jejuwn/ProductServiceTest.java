@@ -1,17 +1,20 @@
 package io.jejuwn;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import io.jejuwn.model.Product;
+import io.jejuwn.repository.ProductRepository;
 import io.jejuwn.service.ProductService;
 import lombok.extern.log4j.Log4j2;
 
@@ -24,10 +27,14 @@ public class ProductServiceTest {
 	@Autowired
 	private ProductService service;
 	
+	@Autowired
+	private ProductRepository repository;
+	
 	// 모든 상품의 정보를 가져오는 메서드
-	//@Test
+	@Test
 	public void testProductList() {
-		log.info(service.getProductList());
+		log.info(service.getProductList2());
+		
 	}
 	
 	// 상품 생성
@@ -65,8 +72,19 @@ public class ProductServiceTest {
 	}
 	
 	// 상품 한개의 정보 보기
-	@Test
+	//@Test
 	public void testProductDetail() {
 		log.info(service.productDetail(1L));
+	}
+	
+	//@Test
+	public void testProductListPage() {
+		PageRequest page = PageRequest.of(0, 10);
+		Page<Product> result = service.productList(page);
+		
+		log.info("결과 값 : " + result);
+		log.info("총 페이지 : " + result.getTotalPages());
+		log.info("전체 개수 : " + result.getTotalElements());
+		log.info("현재 페이지 번호 0부터 시작 : " + result.getNumber());
 	}
 }

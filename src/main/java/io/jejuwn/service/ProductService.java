@@ -27,6 +27,7 @@ public interface ProductService {
 	// 상품 한개의 정보 보기
 	public Product productDetail(Long id);
 	
+	public List<Product> getProductList2();
 	public Page<Product> productList(Pageable pageable);
 	
 }

@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import io.jejuwn.controller.ProductController;
 import io.jejuwn.mapper.ProductMapper;
+import io.jejuwn.repository.ProductRepository;
 import io.jejuwn.service.ProductService;
 import lombok.extern.log4j.Log4j2;
 
@@ -29,13 +30,16 @@ public class ProductControllerTest {
 	@Autowired
 	private MockMvc mvc;
 	
+	@Autowired
+	private ProductRepository repository;
+	
 	@MockBean
 	private ProductService service;
 	
 	 @Test
 	    public void getProduct() throws Exception {
 			MvcResult result = mvc.perform(MockMvcRequestBuilders
-					.get("/product/list")
+					.get("/product/list", 1)
 					.accept(MediaType.APPLICATION_JSON))
 					.andDo(print())
 					.andExpect(status().isOk())

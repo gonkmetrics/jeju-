@@ -2,6 +2,7 @@ package io.jejuwn.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,7 @@ public class Product {
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="product_seq")
     private BigDecimal id;
 
     /**
@@ -30,6 +31,7 @@ public class Product {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private String name;
 
     /**
@@ -39,6 +41,7 @@ public class Product {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private BigDecimal category;
 
     /**
@@ -48,6 +51,7 @@ public class Product {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column(name = "user_id")
     private BigDecimal userId;
 
     /**
@@ -57,6 +61,7 @@ public class Product {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private BigDecimal region;
 
     /**

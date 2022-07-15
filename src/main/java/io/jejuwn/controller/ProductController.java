@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -106,11 +107,12 @@ public class ProductController {
 	@GetMapping(value="/list",
 			produces= {MediaType.APPLICATION_XML_VALUE,
 					MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public String productList(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+	public ResponseEntity<String> productList(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 	ResponseEntity<String> entity = null;
 	
 	try {
-		service.productList(pageable);
+		Page<Product> page = null;
+		page = service.productList(pageable);
 		entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 	} catch(Exception e) {
 		entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);

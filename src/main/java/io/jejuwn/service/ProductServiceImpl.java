@@ -27,6 +27,9 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> getProductList(){
 		return mapper.selectByExample(null);
 	}
+	public List<Product> getProductList2(){
+		return productRepository.findAll();
+	}
 	// 상품 생성
 	@Override
 	public void productInsert(Product vo) {
@@ -48,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
 		Product productDetail = mapper.selectByPrimaryKey(BigDecimal.valueOf(id));
 		return productDetail;
 	}
-	
+	@Override
 	public Page<Product> productList(Pageable pageable){
 		return productRepository.findAll(pageable);
 	}
