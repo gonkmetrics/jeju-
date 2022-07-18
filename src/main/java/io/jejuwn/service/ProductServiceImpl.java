@@ -27,6 +27,7 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> getProductList(){
 		return mapper.selectByExample(null);
 	}
+	@Override
 	public List<Product> getProductList2(){
 		return productRepository.findAll();
 	}

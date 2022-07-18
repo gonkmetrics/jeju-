@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import io.jejuwn.model.Product;
 
-@Service
+
 public interface ProductService {
 		
 	

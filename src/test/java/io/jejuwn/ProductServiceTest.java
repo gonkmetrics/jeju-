@@ -42,7 +42,7 @@ public class ProductServiceTest {
 	public void testProductInsert() {
 		Product vo = new Product();
 		
-		vo.setId(BigDecimal.valueOf(2));
+		// vo.setId(BigDecimal.valueOf(2));
 		vo.setName("마스크");
 		vo.setCategory(BigDecimal.valueOf(2));
 		vo.setUserId(BigDecimal.valueOf(2));

@@ -2,6 +2,16 @@ package io.jejuwn.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.Data;
+
+@Entity
+@Data
 public class ProductLike {
     /**
      *
@@ -10,6 +20,8 @@ public class ProductLike {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="product_lik_seq")
     private BigDecimal id;
 
     /**
@@ -19,6 +31,7 @@ public class ProductLike {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private BigDecimal userId;
 
     /**
@@ -28,6 +41,7 @@ public class ProductLike {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private BigDecimal productId;
 
     /**

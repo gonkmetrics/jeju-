@@ -1,5 +1,6 @@
 package io.jejuwn;
 
+import java.awt.print.Pageable;
 import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
@@ -7,6 +8,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -54,6 +57,16 @@ public class UserServiceTest {
 	public void testUserDetail() {
 		log.info(service.userDetail(1L));
 		
+	}
+	
+	@Test
+	public void testUserList() {
+		Page<Usertbl> result = service.userList(page);
+		
+		log.info("결과 값 : " + result);
+		log.info("총 페이지 : " + result.getTotalPages());
+		log.info("전체 개수 : " + result.getTotalElements());
+		log.info("현재 페이지 번호 0부터 시작 : " + result.getNumber());
 	}
 
 }

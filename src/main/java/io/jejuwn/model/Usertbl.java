@@ -2,6 +2,13 @@ package io.jejuwn.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Usertbl {
     /**
      *
@@ -10,6 +17,8 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="usertbl_seq")
     private BigDecimal id;
 
     /**
@@ -19,6 +28,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private String name;
 
     /**
@@ -28,6 +38,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private String nick;
 
     /**
@@ -37,6 +48,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private String pass;
 
     /**
@@ -46,6 +58,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private BigDecimal gender;
 
     /**
@@ -55,6 +68,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private BigDecimal age;
 
     /**
@@ -64,6 +78,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private String email;
 
     /**
@@ -73,6 +88,7 @@ public class Usertbl {
      *
      * @mbg.generated Wed Jun 29 20:14:37 KST 2022
      */
+	@Column
     private BigDecimal role;
 
     /**

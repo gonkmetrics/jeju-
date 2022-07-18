@@ -15,6 +15,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UsertblMapper mapper;
 	
+	
 	@Override
 	public List<Usertbl> listUser() {
 		return mapper.selectByExample(null);
