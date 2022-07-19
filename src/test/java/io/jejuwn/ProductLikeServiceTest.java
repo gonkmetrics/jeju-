@@ -3,11 +3,12 @@ package io.jejuwn;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -46,6 +47,12 @@ public class ProductLikeServiceTest {
 	//@Test
 	public void testProductLikeDelete() {
 		service.productLikeDelete(1L);
+	}
+	
+	//@Test
+	public void testProductLikePaging() {
+		Pageable pageable = Pageable.ofSize(1);
+		log.info(service.productLikeList(pageable));
 	}
 
 }

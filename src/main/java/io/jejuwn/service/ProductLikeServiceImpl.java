@@ -38,9 +38,9 @@ public class ProductLikeServiceImpl implements ProductLikeService {
 	public void productLikeDelete(Long id) {
 		mapper.deleteByPrimaryKey(BigDecimal.valueOf(id));
 	}
-	//@Override
-	//public Page<ProductLike> productLikeList(Pageable pageable){
-	//	return productLikeRepository.findById(pageable);
-	//}
+	@Override
+	public Page<ProductLike> productLikeList(Pageable pageable){
+		return productLikeRepository.findAll(pageable);
+	}
 
 }

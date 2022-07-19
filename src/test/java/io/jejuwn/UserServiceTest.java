@@ -60,13 +60,13 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testUserList() {
-		Page<Usertbl> result = service.userList(page);
+	 public void testUserList() {
+		log.info(service.userList(1));
 		
-		log.info("결과 값 : " + result);
-		log.info("총 페이지 : " + result.getTotalPages());
-		log.info("전체 개수 : " + result.getTotalElements());
-		log.info("현재 페이지 번호 0부터 시작 : " + result.getNumber());
-	}
+		//log.info("결과 값 : " + result);
+		//log.info("총 페이지 : " + result.getTotalPages());
+		//log.info("전체 개수 : " + result.getTotalElements());
+		//log.info("현재 페이지 번호 0부터 시작 : " + result.getNumber());
+	} 
 
 }
