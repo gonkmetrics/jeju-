@@ -56,7 +56,7 @@ public class AddressController {
 		
 		ResponseEntity<String> entity = null;
 		try {
-			vo.setId(BigDecimal.valueOf(id));
+			vo.setId(id);
 			service.addressUpdate(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);

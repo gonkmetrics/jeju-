@@ -203,9 +203,8 @@ class SignUpForm {
     private String nick;
     private String name;
     private String pass;
-    private BigDecimal gender;
+    private Long gender;
     private String email;
-    //private BigDecimal role;
     private String roleName;
 
     public Usertbl toEntity() {

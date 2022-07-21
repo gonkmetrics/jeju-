@@ -55,7 +55,7 @@ public class ProductCommentController {
 			
 			try {
 				entity = new ResponseEntity<>(
-						service.getProductCommentList(productId), HttpStatus.OK);			
+						service.getProductComment(productId), HttpStatus.OK);			
 			} catch(Exception e) {
 				e.printStackTrace();
 				entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -92,7 +92,7 @@ public class ProductCommentController {
 		
 		ResponseEntity<String> entity = null;
 		try {
-			vo.setProductId(BigDecimal.valueOf(id));
+			vo.setProductId(id);
 			service.updateProductComment(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);

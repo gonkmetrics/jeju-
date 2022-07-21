@@ -6,32 +6,32 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.jejuwn.mapper.ProductCommentMapper;
 import io.jejuwn.model.ProductComment;
+import io.jejuwn.repository.ProductCommentRepository;
 
 @Service
 public class ProductCommentServiceImpl implements ProductCommentService {
 	
 	@Autowired
-	private ProductCommentMapper mapper;
+	private ProductCommentRepository repository;
 	
 	@Override
-	public List<ProductComment> getProductCommentList(Long productId){
-		return mapper.selectByExample(null);
+	public List<ProductComment> getProductComment(Long productId){
+		return repository.findAllById(null);
 	}
 	
 	@Override
 	public void insertProductComment(ProductComment vo) {
-		mapper.insert(vo);
+		repository.save(vo);
 	}
 	
 	@Override
 	public void updateProductComment(ProductComment vo) {
-		mapper.updateByPrimaryKey(vo);
+		repository.save(vo);
 	}
 	@Override
 	public void deleteProdcutComment(Long id) {
-		mapper.deleteByPrimaryKey(BigDecimal.valueOf(id));
+		repository.deleteById(id);
 	}
 
 }

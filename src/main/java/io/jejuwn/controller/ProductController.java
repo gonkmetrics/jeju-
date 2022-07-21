@@ -54,7 +54,7 @@ public class ProductController {
 		
 		ResponseEntity<String> entity = null;
 		try {
-			vo.setId(BigDecimal.valueOf(id));
+			vo.setId(id);
 			service.productUpdate(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);

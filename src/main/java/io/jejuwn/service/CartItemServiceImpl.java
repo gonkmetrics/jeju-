@@ -1,23 +1,24 @@
 package io.jejuwn.service;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.jejuwn.mapper.CartItemMapper;
 import io.jejuwn.model.CartItem;
+import io.jejuwn.repository.CartItemRepository;
 
 @Service
 public class CartItemServiceImpl implements CartItemService {
 	
 	@Autowired
-	private CartItemMapper mapper;
+	private CartItemRepository repository;
 	
 	@Override
 	public List<CartItem> getAllCartItemList(){
-		return mapper.selectByExample(null);
+		return repository.findAll();
 	}
 	/*@Override
 	public CartItem getCartItemList(Long cartId){
@@ -26,12 +27,19 @@ public class CartItemServiceImpl implements CartItemService {
 	
 	@Override
 	public void carItemInsert(CartItem vo) {
-		mapper.insert(vo);
+		repository.save(vo);
 	}
 	
 	@Override
 	public void cartItemDelete(Long id) {
-		mapper.deleteByPrimaryKey(BigDecimal.valueOf(id));
+		repository.deleteById(id);
+	}
+
+	@Override
+	public List<CartItem> getAllCartItemByCartId(Long id) {
+		// TODO Auto-generated method stub
+		List<Long> iterable = Arrays.asList(id);
+		return repository.findAllById(iterable);
 	}
 	
 

@@ -37,12 +37,18 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             log.info("in filterChain");
         } else {*/
-            String authorizationHeader = request.getHeader("Authorization");
+    		String authorizationHeader=null;
+    		try {
+    			authorizationHeader = request.getHeader("Authorization");
+    		}catch(Exception e) {
+    			log.info(e);
+    		}
             if(authorizationHeader != null) {
                 try{
                 	log.info("in authHead");
                 	log.info(authorizationHeader);
                     String token = authorizationHeader;
+                    log.info(authorizationHeader);
                     Algorithm algorithm = Algorithm.HMAC256("secretKey".getBytes());
 
                     JWTVerifier verifier = JWT.require(algorithm).build();
@@ -50,6 +56,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                     DecodedJWT decodedJWT = verifier.verify(token);
 
                     String username = decodedJWT.getSubject();
+                    log.info(username);
                     
                     //HIGH PRIORITY FOR FIX
                     
@@ -58,10 +65,12 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                     Arrays.stream(roles).forEach(role -> {
                         authorities.add(new SimpleGrantedAuthority(role));
                     });
+                    log.info(authorities.toString());
                     
-                    String pass = (String) SecurityContextHolder.getContext().getAuthentication().getCredentials();
+                    //String pass = (String) SecurityContextHolder.getContext().getAuthentication().getCredentials();
+                    //log.info(pass);
                     UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                            new UsernamePasswordAuthenticationToken(username, pass, authorities);
+                            new UsernamePasswordAuthenticationToken(username, null, authorities);
 
                     SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
                     filterChain.doFilter(request, response);

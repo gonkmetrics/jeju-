@@ -16,7 +16,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import io.jejuwn.mapper.UsertblMapper;
 import io.jejuwn.model.Role;
 import io.jejuwn.model.Usertbl;
 import io.jejuwn.repository.RoleRepository;
@@ -33,9 +32,6 @@ public class UsertblServiceImpl implements UsertblService, UserDetailsService {
 	private final JwtTokenProvider tokenUtils;
 	
 	@Autowired
-	private UsertblMapper mapper;
-	
-	@Autowired
 	UserRepository userRepository;
 	
 	@Autowired
@@ -46,30 +42,30 @@ public class UsertblServiceImpl implements UsertblService, UserDetailsService {
 	
 	@Override
 	public List<Usertbl> listUser() {
-		return mapper.selectByExample(null);
+		return userRepository.findAll();
 	}
 	
 	@Override
 	public void insertUser(Usertbl vo) {
-		mapper.insert(vo);
+		userRepository.save(vo);
 	}
 	
 	@Override
 	public void deleteUser(Long id) {
-		mapper.deleteByPrimaryKey(BigDecimal.valueOf(id));
+		userRepository.deleteById(id);;
 	}
 	
 	@Override
 	public Usertbl userDetail(Long id) {
-		return mapper.selectByPrimaryKey(BigDecimal.valueOf(id));
+		return userRepository.findById(id).get();
 	}
 	@Override
 	public void updateUser(Usertbl vo) {
-		mapper.updateByPrimaryKey(vo);
+		userRepository.save(vo);
 	}
 	
 	@Override
-	public Optional<Usertbl> findByIdPw(Long id) { return userRepository.findById(BigDecimal.valueOf(id)); }
+	public Optional<Usertbl> findByIdPw(Long id) { return userRepository.findById(id); }
 	// i love my repository
 	// where is my repository
 	/*
@@ -91,7 +87,7 @@ public class UsertblServiceImpl implements UsertblService, UserDetailsService {
 	@Override
 	public Optional<Usertbl> findById(Long id) {
 		// TODO Auto-generated method stub
-		return userRepository.findById(BigDecimal.valueOf(id));
+		return userRepository.findById(id);
 	}
 
 	@Override
@@ -103,7 +99,7 @@ public class UsertblServiceImpl implements UsertblService, UserDetailsService {
 	@Override
 	public Optional<Usertbl> findByIdAndPass(Long id, String pass) {
 		// TODO Auto-generated method stub
-		return userRepository.findByIdAndPass(BigDecimal.valueOf(id), pass);
+		return userRepository.findByIdAndPass((id), pass);
 	}
 
 	@Override

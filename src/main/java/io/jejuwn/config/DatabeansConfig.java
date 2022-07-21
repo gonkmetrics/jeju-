@@ -20,13 +20,12 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import io.jejuwn.mapper.AddressMapper;
 
 @Configuration
 @MapperScan(value= {"io.jejuwn.mapper"})
 @ConfigurationProperties(prefix = "params.datasource")
 //@EnableTransactionManagement
-public class MybatisConfig {
+public class DatabeansConfig {
 	
 	@Bean
     public DataSource dataSource() throws SQLException {

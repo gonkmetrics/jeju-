@@ -54,7 +54,7 @@ public class PromotionController {
 		
 		ResponseEntity<String> entity = null;
 		try {
-			vo.setId(BigDecimal.valueOf(id));
+			vo.setId(id);
 			service.promotionUpdate(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);

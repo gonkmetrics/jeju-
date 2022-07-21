@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import io.jejuwn.model.CartItem;
 
+
 public interface CartItemService {
 	
 	// 모든 장바구니 보기
@@ -16,4 +17,6 @@ public interface CartItemService {
 	public void carItemInsert(CartItem vo);
 	// 장바구니 삭제
 	public void cartItemDelete(Long id);
+	
+	public List<CartItem> getAllCartItemByCartId(Long id);
 }

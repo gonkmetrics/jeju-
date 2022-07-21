@@ -8,39 +8,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import io.jejuwn.mapper.AddressMapper;
 import io.jejuwn.model.Address;
+import io.jejuwn.repository.AddressRepository;
 
 @Service
 public class AddressServiceImpl implements AddressService {
 	
 	
 	@Autowired
-	private AddressMapper mapper;
+	private AddressRepository repository;
 	
 	@Override
 	public List<Address> getAddressList() {
-		return mapper.selectByExample(null);
+		return repository.findAll();
 	}
 	
 	@Override
 	public void addressInsert(Address vo) {
-		mapper.insert(vo);
+		repository.save(vo);
 	}
 	
 	@Override
 	public void addressDelete(Long id) {
-		mapper.deleteByPrimaryKey(BigDecimal.valueOf(id));
+		repository.deleteById(id);
 	}
 	
 	@Override
 	public void addressUpdate(Address vo) {
-		mapper.updateByPrimaryKey(vo);
+		repository.save(vo);
 	}
 	
 	@Override
 	public Address addressDetail(Long userId) {
-		Address addressDetail = mapper.selectByPrimaryKey(BigDecimal.valueOf(userId));
+		Address addressDetail = repository.findById(userId).get();
 		return addressDetail;
 	}
 

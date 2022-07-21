@@ -6,37 +6,40 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.jejuwn.mapper.UserOrderMapper;
+
 import io.jejuwn.model.UserOrder;
+import io.jejuwn.repository.UserOrderRepository;
+
 
 @Service
 public class UserOrderServiceImpl implements UserOrderService {
 	
 	@Autowired
-	private UserOrderMapper mapper;
+	private UserOrderRepository repository;
 	
 	@Override
 	public List<UserOrder> getAllUserOrderList() {
-		return mapper.selectByExample(null);
+		return repository.findAll();
 	}
 	
 	@Override
 	public void userOrderInsert(UserOrder vo) {
-		mapper.insert(vo);
+		repository.save(vo);
 	}
 	
 	@Override
 	public void userOrderDelete(Long id) {
-		mapper.deleteByPrimaryKey(BigDecimal.valueOf(id));
+		repository.deleteById(id);
 	}
 	
 	@Override
 	public void userOrderUpdate(UserOrder vo) {
-		mapper.updateByPrimaryKey(vo);
+		repository.save(vo);
 	}
 	
+	//GET ALL UNDER ID
 	@Override
 	public List<UserOrder> userOrderList(Long userId) {
-		return mapper.selectByExample(null);
+		return null;
 	}
 }

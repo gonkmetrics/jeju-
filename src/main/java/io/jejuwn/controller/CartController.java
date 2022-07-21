@@ -78,14 +78,14 @@ public class CartController {
 	@GetMapping(value="/list/{userId}",
 			produces= {MediaType.APPLICATION_XML_VALUE,
 						MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<Cart>> list (
+	public ResponseEntity<Cart> list (
 			@PathVariable("userId") Long userId) {
 		
-			ResponseEntity<List<Cart>> entity = null;
+			ResponseEntity<Cart> entity = null;
 			
 			try {
 				entity = new ResponseEntity<>(
-						service.getCartList(userId), HttpStatus.OK);			
+						service.getCart(userId), HttpStatus.OK);			
 			} catch(Exception e) {
 				e.printStackTrace();
 				entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

@@ -54,7 +54,7 @@ public class UserController {
 		
 		ResponseEntity<String> entity = null;
 		try {
-			vo.setId(BigDecimal.valueOf(id));
+			vo.setId(id);
 			service.updateUser(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);

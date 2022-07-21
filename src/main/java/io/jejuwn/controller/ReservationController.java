@@ -55,7 +55,7 @@ public class ReservationController {
 		
 		ResponseEntity<String> entity = null;
 		try {
-			vo.setId(BigDecimal.valueOf(id));
+			vo.setId(id);
 			service.ReservationUpdate(vo);
 			
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
