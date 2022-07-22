@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.jejuwn.mapper.BlogExtMapper">
-    <insert id="createBlogTable" parameterType="Long" statementType="CALLABLE"> 
+    <insert id="createBlogTable" parameterType="int" statementType="CALLABLE"> 
 		DECLARE
 		    query varchar2(500);
 		    tablename varchar2(100);
@@ -28,4 +28,21 @@
 		END IF;
 		END;
     </insert>
+    
+    <insert id="insertBlog">
+    	INSERT INTO blog_user_${userId} (id, user_id, title, content)
+    		VALUES
+    	(#{id}, #{userId,jdbcType=NUMERIC}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR})
+    </insert>
+    
+    <update id="updateBlog">
+    	UPDATE blog_user_${userId} 
+    		SET
+    	user_id=#{userId,jdbcType=NUMERIC}, title=#{title,jdbcType=VARCHAR}, content=#{content,jdbcType=VARCHAR},
+    	updatedate=SYSDATE WHERE id=#{id}  
+    </update>
+    
+    <delete id="deleteBlog">
+    	DELETE FROM blog_user_${userId} WHERE id=#{id}
+    </delete>
 </mapper>

@@ -30,9 +30,9 @@ public class DatabeansConfig {
 	@Bean
     public DataSource dataSource() throws SQLException {
 		HikariConfig config = new HikariConfig();
-		config.setJdbcUrl("jdbc:oracle:thin:@//localhost:1522/XEPDB1");
-		config.setUsername("jejutest");
-		config.setPassword("jejutest");
+		config.setJdbcUrl("jdbc:oracle:thin:@//localhost:1521/XEPDB1");
+		config.setUsername("mytest");
+		config.setPassword("mytest");
 		config.setDriverClassName("oracle.jdbc.OracleDriver");
 		config.addDataSourceProperty("cachePrepStmts", "true");
 		config.addDataSourceProperty("prepStmtCacheSize", "250");

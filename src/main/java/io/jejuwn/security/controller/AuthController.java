@@ -63,7 +63,6 @@ public class AuthController {
     @Autowired private PasswordEncoder passwordEncoder;
     @Autowired private UsertblService userService;
     @Autowired private RoleRepository roleRepository;
-    @Autowired private RedisTemplate<String, Object> redisTemplate;
     
     @PostMapping("/user/save")
     public ResponseEntity<Usertbl> saveUser(@RequestBody SignUpForm signUpForm) {
@@ -102,8 +101,6 @@ public class AuthController {
     	try {
     		String subject = jwtTokens.getTokenPrincipal(authorizationHeader);
     		log.info(subject);
-        	redisTemplate.opsForValue()
-            .set(subject, "", 1, TimeUnit.MILLISECONDS);;
         	return ResponseEntity.ok("Logged out");
     	}catch (Exception e){
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -126,8 +123,6 @@ public class AuthController {
             Date current = new Date(System.currentTimeMillis());
             Long refreshTokenExpiry = refreshTokenExpiryDate.getTime() - current.getTime();
             
-            redisTemplate.opsForValue()
-            .set(authentication.getName(), refreshToken, refreshTokenExpiry, TimeUnit.MILLISECONDS);
 
             return ResponseEntity.ok()
                 .header(
